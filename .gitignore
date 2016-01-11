@@ -1,0 +1,12 @@
+/project/.ivy/.sbt.ivy.lock
+/project/.boot/update.log
+/project/.boot/sbt.boot.lock
+/logs/default.log
+/output/
+/project/target/
+/project/project/
+/project/.idea/
+/.idea/
+/target/
+extras/packager/output/
+extras/packager/tmp/
