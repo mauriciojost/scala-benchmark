@@ -1,6 +1,10 @@
-package org.mauritania.scalatest.algorithms
+package org.mauritania.scalatest.algorithms.catalog
 
-object TailRecursive extends ComparableAlgorithms {
+import org.mauritania.scalatest.algorithms.{Algorithm, Comparables}
+
+import scala.annotation.tailrec
+
+object TailRecursive extends Comparables {
 
   def getFunctionA(): Algorithm = AlgorithmA
 
@@ -9,29 +13,30 @@ object TailRecursive extends ComparableAlgorithms {
 }
 
 object AlgorithmA extends Algorithm {
-  def description() = "Without using tail recursion"
+  def description() = "Using head recursion (recursive call and then some calculation)"
 
   def function(seed: Int): Int = {
     val range = Range(1, seed).toList
-    def sum(acum: Int, values: Seq[Int]): Int = {
+    def sum(values: Seq[Int]): Int = {
       values match {
         case Nil => 0
         case a :: Nil => a
-        case a :: b :: rest => sum(a + b, rest)
+        case a :: rest => a + sum(rest)
       }
     }
-    sum(0, range)
+    sum(range)
   }
 
 }
 
 object AlgorithmB extends Algorithm {
 
-  def description() = "Using tail recursion"
+  def description() = "Using tail recursion (some calculation and then recursive call)"
 
   def function(seed: Int): Int = {
     val range = Range(1, seed).toList
-    def sum(acum: Int, values: Seq[Int]): Int = {
+    @tailrec
+    def sum(acum: Int, values: List[Int]): Int = {
       values match {
         case Nil => 0
         case a :: Nil => a

@@ -1,6 +1,6 @@
 package org.mauritania.scalatest.algorithms
 
-trait ComparableAlgorithms {
+trait Comparables {
 
   def getFunctionA(): Algorithm
 

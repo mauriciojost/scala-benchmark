@@ -1,18 +1,12 @@
 package org.mauritania.scalatest
 
-import org.mauritania.scalatest.algorithms.TailRecursive
+import org.mauritania.scalatest.algorithms.catalog.TailRecursive
 
 object Starter {
 
   def main(args: Array[String]): Unit = {
-    println(Tester.test(TailRecursive.getFunctionA()))
-    println(Tester.test(TailRecursive.getFunctionB()))
-
-    println(Tester.test(TailRecursive.getFunctionA()))
-    println(Tester.test(TailRecursive.getFunctionB()))
-
-    println(Tester.test(TailRecursive.getFunctionA()))
-    println(Tester.test(TailRecursive.getFunctionB()))
+    Tester.testComparables(TailRecursive, 5000, 100000)
   }
+
 
 }
