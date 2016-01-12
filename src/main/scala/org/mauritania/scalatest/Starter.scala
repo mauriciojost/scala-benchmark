@@ -1,6 +1,6 @@
 package org.mauritania.scalatest
 
-import org.mauritania.scalatest.algorithms.catalog.TailRecursive
+import org.mauritania.scalatest.algorithms.catalog._
 
 object Starter {
 
