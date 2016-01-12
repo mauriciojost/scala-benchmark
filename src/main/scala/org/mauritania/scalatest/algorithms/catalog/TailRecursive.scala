@@ -6,13 +6,13 @@ import scala.annotation.tailrec
 
 object TailRecursive extends Comparables {
 
-  def getFunctionA(): Algorithm = AlgorithmA
+  def getFunctionA(): Algorithm = TRAlgorithmA
 
-  def getFunctionB(): Algorithm = AlgorithmB
+  def getFunctionB(): Algorithm = TRAlgorithmB
 
 }
 
-object AlgorithmA extends Algorithm {
+object TRAlgorithmA extends Algorithm {
   def description() = "Using head recursion (recursive call and then some calculation)"
 
   def function(seed: Int): Int = {
@@ -29,7 +29,7 @@ object AlgorithmA extends Algorithm {
 
 }
 
-object AlgorithmB extends Algorithm {
+object TRAlgorithmB extends Algorithm {
 
   def description() = "Using tail recursion (some calculation and then recursive call)"
 
