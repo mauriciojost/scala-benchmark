@@ -1,16 +1,9 @@
-import com.typesafe.sbt.SbtNativePackager._
-import NativePackagerKeys._
 
 name := "scala-test"
 
 version := "0.1"
 
-
-packageArchetype.java_server
-
-
 scalaVersion := "2.10.1"
-
 
 libraryDependencies ++= Seq(
   "org.slf4j" % "slf4j-api" % "1.7.5",
