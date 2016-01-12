@@ -1,5 +1,5 @@
 
-name := "scala-test"
+name := "scala-mini-benchmark"
 
 version := "0.1"
 
