@@ -1,18 +1,22 @@
 package org.mauritania.scalatest
 
 import org.mauritania.scalatest.algorithms.{Comparables, Algorithm}
+import org.mauritania.scalatest.result.{VsSample, Sample}
 
 object Tester {
 
-  def testComparables(alg: Comparables, seed: Int, iterations: Int): Unit = {
+  def testComparables(alg: Comparables, seed: Int, iterations: Int) = {
+    // General warm up
     use(measureFunctionManyShots(alg.getFunctionA(), seed, iterations).toString())
     use(measureFunctionManyShots(alg.getFunctionB(), seed, iterations).toString())
 
-    println(measureFunctionManyShots(alg.getFunctionA(), seed, iterations))
-    println(measureFunctionManyShots(alg.getFunctionB(), seed, iterations))
+    val result = Range(0, 10).map { index =>
+      val fa = measureFunctionManyShots(alg.getFunctionA(), seed, iterations)
+      val fb = measureFunctionManyShots(alg.getFunctionB(), seed, iterations)
+      VsSample(fa, fb)
+    }
 
-    println(measureFunctionManyShots(alg.getFunctionA(), seed, iterations))
-    println(measureFunctionManyShots(alg.getFunctionB(), seed, iterations))
+    result.toList
 
   }
 
@@ -25,7 +29,7 @@ object Tester {
       measureFunctionOneShot(f.function, seed)
     }
 
-    (f.description(), results.sum)
+    Sample(f.description(), results.sum)
 
   }
 
