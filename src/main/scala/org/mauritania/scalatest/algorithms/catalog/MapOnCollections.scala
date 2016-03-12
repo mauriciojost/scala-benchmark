@@ -1,30 +1,22 @@
 package org.mauritania.scalatest.algorithms.catalog
 
-import org.mauritania.scalatest.algorithms.{Algorithm, Comparables}
+import org.mauritania.scalatest.algorithms.Comparables
 
 object MapOnCollections extends Comparables {
 
-  def getFunctionA(): Algorithm = MCAlgorithmA
+  val l = Range(1, 1000).toList
+  val s = Range(1, 1000).toSeq
 
-  def getFunctionB(): Algorithm = MCAlgorithmB
+  override def idA() = "List to sum"
 
-}
-
-object MCAlgorithmA extends Algorithm {
-  def description() = "Using List to iterate"
-
-  def function(seed: Int): Int = {
-    Range(1, seed).toList.sum
+  override def fA(seed: Int): Int = {
+    l.sum
   }
 
-}
+  override def idB() = "Seq to sum"
 
-object MCAlgorithmB extends Algorithm {
-
-  def description() = "Using Seq to iterate"
-
-  def function(seed: Int): Int = {
-    Range(1, seed).toSeq.sum
+  override def fB(seed: Int): Int = {
+    s.sum
   }
 
 }

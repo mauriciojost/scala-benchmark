@@ -2,9 +2,17 @@ package org.mauritania.scalatest.algorithms
 
 trait Comparables {
 
-  def getFunctionA(): Algorithm
+  def idA(): String = ""
 
-  def getFunctionB(): Algorithm
+  def fA(seed: Int): Int = seed
+
+  def idB(): String = ""
+
+  def fB(seed: Int): Int = seed
+
+  def idC(): String = ""
+
+  def fC(seed: Int): Int = seed
 
 }
 

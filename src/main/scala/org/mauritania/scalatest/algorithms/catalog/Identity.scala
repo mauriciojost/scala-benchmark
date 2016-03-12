@@ -1,19 +1,18 @@
 package org.mauritania.scalatest.algorithms.catalog
 
-import org.mauritania.scalatest.algorithms.{Algorithm, Comparables}
+import org.mauritania.scalatest.algorithms.Comparables
 
 object Identity extends Comparables {
 
-  def getFunctionA(): Algorithm = IAlgorithmAB
+  override def idA() = "identity1"
 
-  def getFunctionB(): Algorithm = IAlgorithmAB
+  override def fA(seed: Int): Int = fX(seed)
 
-}
+  override def idB() = "identity2"
 
-object IAlgorithmAB extends Algorithm {
-  def description() = "The same algorithm used twice"
+  override def fB(seed: Int): Int = fX(seed)
 
-  def function(seed: Int): Int = {
+  private def fX(seed: Int): Int = {
     Range(1, seed).toList.sum
   }
 
