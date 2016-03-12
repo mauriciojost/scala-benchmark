@@ -2,7 +2,7 @@ package org.mauritania.scalatest.algorithms.catalog
 
 import org.mauritania.scalatest.algorithms.Comparables
 
-object MapOnCollections extends Comparables {
+object SeqVsListSum extends Comparables {
 
   val l = Range(1, 1000).toList
   val s = Range(1, 1000).toSeq

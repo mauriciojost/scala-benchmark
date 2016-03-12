@@ -1,7 +1,8 @@
 package org.mauritania.scalatest
 
+
 import org.mauritania.scalatest.algorithms.Comparables
-import org.mauritania.scalatest.result.{Report, VsSample, Sample}
+import org.mauritania.scalatest.result.{Report, Sample, VsSample}
 
 object Comparator {
 
