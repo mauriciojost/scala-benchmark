@@ -1,9 +1,7 @@
 package org.mauritania.scalatest.result
 
-import java.io.{File, PrintWriter}
-
-case class Report (
-  vsSamples : List[VsSample]
+case class Report(
+  vsSamples: List[VsSample]
 ) {
 
   val NL = "\n"
@@ -27,9 +25,14 @@ case class Report (
 
     val s = new StringBuilder()
     s.append(NL)
-    s.append(saName + sep + sbName)
+    s.append(saName)
+    s.append(sep)
+    s.append(sbName)
+    s.append(NL)
     vsSamples.foreach { vsSample =>
-      s.append(vsSample.sampleA.duration + sep + vsSample.sampleB.duration)
+      s.append(vsSample.sampleA.duration)
+      s.append(sep)
+      s.append(vsSample.sampleB.duration)
       s.append(NL)
     }
     s.append(NL)
@@ -56,14 +59,6 @@ case class Report (
     }
     s.append(NL)
     s.toString()
-  }
-
-  def save() = {
-    import scala.sys.process._
-    val logs: String = "results"
-    val commitId: String = "git rev-parse HEAD".!!
-    new PrintWriter(new File(logs, commitId)) { write(generateTable());write(generateConclusion()); close }
-    this
   }
 
 }
