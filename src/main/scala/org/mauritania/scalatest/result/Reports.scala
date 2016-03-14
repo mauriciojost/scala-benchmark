@@ -7,8 +7,8 @@ case class Reports(reports: List[Report]) {
   def save() = {
     import scala.sys.process._
     val logs: String = "report"
-    val commitId: String = "git rev-parse HEAD".!!
-    val f = new File(logs, commitId + ".log")
+    val commitId: String = "git rev-parse HEAD".!!.substring(0, 10)
+    val f = new File(logs, "after-" + commitId + ".log")
     if (!f.exists()) {
       f.createNewFile()
     }
