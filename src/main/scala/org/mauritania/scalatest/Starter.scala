@@ -11,12 +11,14 @@ object Starter {
       List(
         Comparator.testComparables(Identity, 500, 20000),
         Comparator.testComparables(IdentityX2, 500, 20000),
+        Comparator.testComparables(IdentityX4, 500, 20000),
         Comparator.testComparables(TailRecursive, 500, 20000),
         Comparator.testComparables(SeqVsListSum, 50, 10000),
         Comparator.testComparables(ListVsVectorConcatenation, 10, 20000),
         Comparator.testComparables(ListVsArrayConcatenation, 10, 40000),
         Comparator.testComparables(ListVsArrayPatternMatching, 600, 40000),
-        Comparator.testComparables(ListVsVectorPatternMatching, 600, 400000)
+        Comparator.testComparables(ListVsVectorPatternMatching, 600, 400000),
+        Comparator.testComparables(ListVsVectorRandomAccess, 200, 400000)
       )
     )
 
