@@ -1,20 +1,15 @@
 package org.mauritania.scalatest.algorithms.catalog
 
-import org.mauritania.scalatest.algorithms.Comparables
+import org.mauritania.scalatest.algorithms.{Algorithm, Comparables}
 
 object IdentityX2 extends Comparables {
 
-  override def idA() = "identity0.5"
+  override val a = Algorithm("identity0.5", fX05)
+  override val b = Algorithm("identity1.0", fX10)
 
-  override def fA(seed: Int): Int = fX(seed / 2)
-
-  override def idB() = "identity1.0"
-
-  override def fB(seed: Int): Int = fX(seed)
-
-  private def fX(seed: Int): Int = {
-    Range(1, seed).toList.sum
-  }
+  private def fX(seed: Int, i: Int): Int = Range(1, seed).toList.sum
+  private def fX05(seed: Int, i: Int): Int = fX(seed / 2, i)
+  private def fX10(seed: Int, i: Int): Int = fX(seed, i)
 
 }
 
