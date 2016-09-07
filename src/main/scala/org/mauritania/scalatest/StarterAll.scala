@@ -3,7 +3,7 @@ package org.mauritania.scalatest
 import org.mauritania.scalatest.algorithms.catalog._
 import org.mauritania.scalatest.result.Reports
 
-object StarterUnique {
+object StarterAll {
 
   def main(args: Array[String]): Unit = {
 
@@ -21,8 +21,7 @@ object StarterUnique {
         Comparator.testComparables(ListVsArrayPatternMatching, 600, 400 * iterationsFactor),
         Comparator.testComparables(ListVsVectorPatternMatching, 600, 4000 * iterationsFactor),
         Comparator.testComparables(ListVsVectorRandomAccess, 200, 4000 * iterationsFactor),
-        Comparator.testComparables(PartialFunctionsBigResult, 5000000, 1 * iterationsFactor),
-        Comparator.testComparables(PartialFunctionsSmallResult, 500000, 1 * iterationsFactor)
+        Comparator.testComparables(PartialFunctions, 500000, 1 * iterationsFactor)
       )
     )
 

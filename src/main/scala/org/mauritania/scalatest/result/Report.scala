@@ -1,13 +1,14 @@
 package org.mauritania.scalatest.result
 
 case class Report(
-  vsSamples: List[VsSample]
+  vsSamples: List[VsSample],
+  seed: Int
 ) {
 
   val NL = "\n"
 
   def printConclusion(): Report = {
-    println(generateConclusion)
+    println(generateResultLine)
     this
   }
 
@@ -41,24 +42,21 @@ case class Report(
   }
 
 
-  def generateConclusion(): String = {
-    val saName = vsSamples.head.sampleA.id
-    val sbName = vsSamples.head.sampleB.id
+  def generateResultLine(): String = {
+    val algNameA = vsSamples.head.sampleA.id
+    val algNameB = vsSamples.head.sampleB.id
 
-    val sa = vsSamples.map(s => s.sampleA.duration).sum
-    val sb = vsSamples.map(s => s.sampleB.duration).sum
+    val durationA = vsSamples.map(s => s.sampleA.duration).sum
+    val durationB = vsSamples.map(s => s.sampleB.duration).sum
 
-    val s = new StringBuilder()
-    s.append(NL)
-    if (sa > sb) {
-      s.append("\'" + sbName + "\' is faster than \'" + saName + "\': executed in " + ((sb * 100 / sa)) + "% of time")
-      s.append(NL)
+    val ratio = if (durationA > durationB) {
+      durationB.toDouble / durationA
     } else {
-      s.append("\'" + saName + "\' is faster than \'" + sbName + "\': executed in " + ((sa * 100 / sb)) + "% of time")
-      s.append(NL)
+      durationA.toDouble / durationB
     }
-    s.append(NL)
-    s.toString()
+
+    List(algNameA, algNameB, durationA, durationB, ratio).mkString(",")
+
   }
 
 }

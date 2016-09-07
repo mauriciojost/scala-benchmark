@@ -10,11 +10,11 @@ object ListVsVectorConcatenation extends Comparables {
   override val a = Algorithm("List to ++", fA)
   override val b = Algorithm("Vector to ++", fB)
 
-  private def fA(seed: Int, j: Int): Int = {
+  private def fA(seed: Int): Int = {
     Range(1, seed).map(i => kL).reduce(_++_).size
   }
 
-  private def fB(seed: Int, j: Int): Int = {
+  private def fB(seed: Int): Int = {
     Range(1, seed).map(i => kV).reduce(_++_).size
   }
 

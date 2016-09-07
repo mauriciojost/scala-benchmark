@@ -15,7 +15,7 @@ case class Reports(reports: List[Report]) {
     new FileWriter(f) {
       reports.foreach{rep =>
         append(rep.generateTable())
-        append(rep.generateConclusion())
+        append(rep.generateResultLine())
       }
       close()
     }

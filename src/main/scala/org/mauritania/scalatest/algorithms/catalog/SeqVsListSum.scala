@@ -10,11 +10,11 @@ object SeqVsListSum extends Comparables {
   override val a = Algorithm("List to sum", fA)
   override val b = Algorithm("Seq to sum", fB)
 
-  private def fA(seed: Int, i: Int): Int = {
+  private def fA(seed: Int): Int = {
     l.sum
   }
 
-  private def fB(seed: Int, i: Int): Int = {
+  private def fB(seed: Int): Int = {
     s.sum
   }
 

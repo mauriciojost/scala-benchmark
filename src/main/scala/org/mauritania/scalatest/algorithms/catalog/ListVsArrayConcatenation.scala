@@ -10,11 +10,11 @@ object ListVsArrayConcatenation extends Comparables {
   override val a = Algorithm("List to ++", fA)
   override val b = Algorithm("Array to ++", fB)
 
-  private def fA(seed: Int, i: Int): Int = {
+  private def fA(seed: Int): Int = {
     Range(1, seed).map(i => kL).reduce(_++_).size
   }
 
-  def fB(seed: Int, i: Int): Int = {
+  def fB(seed: Int): Int = {
     Range(1, seed).map(i => kA).reduce(_++_).size
   }
 

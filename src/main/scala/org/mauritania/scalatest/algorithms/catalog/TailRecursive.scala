@@ -9,7 +9,7 @@ object TailRecursive extends Comparables {
   override val a = Algorithm("Head recursion", fA)
   override val b = Algorithm("Tail recursion", fB)
 
-  private def fA(seed: Int, i: Int): Int = {
+  private def fA(seed: Int): Int = {
     val range = Range(1, seed).toList
     def sum(values: Seq[Int]): Int = {
       values match {
@@ -21,7 +21,7 @@ object TailRecursive extends Comparables {
     sum(range)
   }
 
-  private def fB(seed: Int, i: Int): Int = {
+  private def fB(seed: Int): Int = {
     val range = Range(1, seed).toList
     @tailrec
     def sum(acum: Int, values: List[Int]): Int = {
