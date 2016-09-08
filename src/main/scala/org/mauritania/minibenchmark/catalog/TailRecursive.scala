@@ -4,7 +4,7 @@ import org.mauritania.minibenchmark.{Algorithm, Versus}
 
 import scala.annotation.tailrec
 
-object TailRecursive extends Versus {
+class TailRecursive extends Versus {
 
   override val a = Algorithm("Head recursion", fA)
   override val b = Algorithm("Tail recursion", fB)

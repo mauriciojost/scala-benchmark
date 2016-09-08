@@ -2,7 +2,7 @@ package org.mauritania.minibenchmark.catalog
 
 import org.mauritania.minibenchmark.{Algorithm, Versus}
 
-object ListVsVectorPatternMatching extends Versus {
+class ListVsVectorPatternMatching extends Versus {
 
   val kL = Range(1, 500).toList
   val kV = Range(1, 500).toVector

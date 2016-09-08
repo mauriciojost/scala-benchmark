@@ -2,7 +2,7 @@ package org.mauritania.minibenchmark.catalog
 
 import org.mauritania.minibenchmark.{Algorithm, Versus}
 
-object SeqVsListSum extends Versus {
+class SeqVsListSum extends Versus {
 
   val l = Range(1, 1000).toList
   val s = Range(1, 1000).toSeq

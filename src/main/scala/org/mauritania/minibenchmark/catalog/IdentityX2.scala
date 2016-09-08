@@ -2,7 +2,7 @@ package org.mauritania.minibenchmark.catalog
 
 import org.mauritania.minibenchmark.{Algorithm, Versus}
 
-object IdentityX2 extends Versus {
+class IdentityX2 extends Versus {
 
   override val a = Algorithm("identity0.5", fX05)
   override val b = Algorithm("identity1.0", fX10)

@@ -2,7 +2,7 @@ package org.mauritania.minibenchmark.catalog
 
 import org.mauritania.minibenchmark.{Algorithm, Versus}
 
-object PartialFunctions extends Versus {
+class PartialFunctions extends Versus {
 
   override val a = Algorithm("PFU", fA)
   override val b = Algorithm("F&M", fB)

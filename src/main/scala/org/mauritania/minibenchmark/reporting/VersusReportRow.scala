@@ -5,7 +5,8 @@ case class VersusReportRow(
   algNameB: String,
   durationA: Long,
   durationB: Long,
-  ratio: Double
+  ratio: Double,
+  seed: Int
 ) {
   override def toString(): String = {
     this.productIterator.mkString(",")

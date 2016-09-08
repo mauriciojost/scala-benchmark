@@ -35,7 +35,7 @@ case class Report(
       durationA.toDouble / durationB
     }
 
-    VersusReportRow(algNameA, algNameB, durationA, durationB, ratio)
+    VersusReportRow(algNameA, algNameB, durationA, durationB, ratio, seed)
 
   }
 
@@ -50,6 +50,7 @@ object Report {
     new FileWriter(f) {
       reports.foreach{rep =>
         append(rep.generateResultLine().toString())
+        append(System.lineSeparator)
       }
       close()
     }

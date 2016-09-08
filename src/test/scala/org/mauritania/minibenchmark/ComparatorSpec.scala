@@ -12,7 +12,7 @@ class ComparatorSpec extends FunSuite with Matchers {
 
   test("report similar times for identity algorithms") {
 
-    val report = VersusBenchmark.benchmark(Identity, Seed, Iterations)
+    val report = VersusBenchmark.benchmark(new Identity(), Seed, Iterations)
 
     val (smaller, greater) = extractDurationsOrdered(report)
     val ratio = (smaller / greater)
@@ -25,7 +25,7 @@ class ComparatorSpec extends FunSuite with Matchers {
 
   test("report corresponding times for identityX2 algorithms") {
 
-    val report = VersusBenchmark.benchmark(IdentityX2, Seed, Iterations)
+    val report = VersusBenchmark.benchmark(new IdentityX2(), Seed, Iterations)
 
     val (smaller, greater) = extractDurationsOrdered(report)
     val ratio = (smaller / greater)
@@ -38,7 +38,7 @@ class ComparatorSpec extends FunSuite with Matchers {
 
   test("report corresponding times for identityX4 algorithms") {
 
-    val report = VersusBenchmark.benchmark(IdentityX4, Seed, Iterations)
+    val report = VersusBenchmark.benchmark(new IdentityX4(), Seed, Iterations)
 
     val (smaller, greater) = extractDurationsOrdered(report)
     val ratio = (smaller / greater)

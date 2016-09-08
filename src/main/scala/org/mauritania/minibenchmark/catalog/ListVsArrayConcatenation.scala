@@ -2,7 +2,7 @@ package org.mauritania.minibenchmark.catalog
 
 import org.mauritania.minibenchmark.{Algorithm, Versus}
 
-object ListVsArrayConcatenation extends Versus {
+class ListVsArrayConcatenation extends Versus {
 
   val kL = List(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
   val kA = Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)

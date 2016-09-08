@@ -2,7 +2,7 @@ package org.mauritania.minibenchmark.catalog
 
 import org.mauritania.minibenchmark.{Algorithm, Versus}
 
-object ListVsVectorRandomAccess extends Versus {
+class ListVsVectorRandomAccess extends Versus {
 
   val kLOr = Range(1, 1000).toList
   val kVOr = Range(1, 1000).toVector
