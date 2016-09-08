@@ -1,8 +1,8 @@
-package org.mauritania.scalatest.algorithms.catalog
+package org.mauritania.minibenchmark.catalog
 
-import org.mauritania.scalatest.algorithms.{Algorithm, Comparables}
+import org.mauritania.minibenchmark.{Algorithm, Versus}
 
-object IdentityX2 extends Comparables {
+object IdentityX2 extends Versus {
 
   override val a = Algorithm("identity0.5", fX05)
   override val b = Algorithm("identity1.0", fX10)

@@ -1,8 +1,8 @@
-package org.mauritania.scalatest.algorithms.catalog
+package org.mauritania.minibenchmark.catalog
 
-import org.mauritania.scalatest.algorithms.{Algorithm, Comparables}
+import org.mauritania.minibenchmark.{Algorithm, Versus}
 
-object ListVsArrayConcatenation extends Comparables {
+object ListVsArrayConcatenation extends Versus {
 
   val kL = List(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
   val kA = Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)

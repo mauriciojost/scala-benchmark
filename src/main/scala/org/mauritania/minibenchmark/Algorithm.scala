@@ -1,4 +1,4 @@
-package org.mauritania.scalatest.algorithms
+package org.mauritania.minibenchmark
 
 case class Algorithm (
   val id: String,

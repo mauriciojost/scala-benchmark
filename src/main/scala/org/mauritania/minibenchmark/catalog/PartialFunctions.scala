@@ -1,8 +1,8 @@
-package org.mauritania.scalatest.algorithms.catalog
+package org.mauritania.minibenchmark.catalog
 
-import org.mauritania.scalatest.algorithms.{Algorithm, Comparables}
+import org.mauritania.minibenchmark.{Algorithm, Versus}
 
-object PartialFunctions extends Comparables {
+object PartialFunctions extends Versus {
 
   override val a = Algorithm("PFU", fA)
   override val b = Algorithm("F&M", fB)

@@ -1,8 +1,8 @@
-package org.mauritania.scalatest.algorithms.catalog
+package org.mauritania.minibenchmark.catalog
 
-import org.mauritania.scalatest.algorithms.{Algorithm, Comparables}
+import org.mauritania.minibenchmark.{Algorithm, Versus}
 
-object ListVsVectorPatternMatching extends Comparables {
+object ListVsVectorPatternMatching extends Versus {
 
   val kL = Range(1, 500).toList
   val kV = Range(1, 500).toVector

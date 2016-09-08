@@ -1,8 +1,8 @@
-package org.mauritania.scalatest.algorithms.catalog
+package org.mauritania.minibenchmark.catalog
 
-import org.mauritania.scalatest.algorithms.{Algorithm, Comparables}
+import org.mauritania.minibenchmark.{Algorithm, Versus}
 
-object ListVsVectorRandomAccess extends Comparables {
+object ListVsVectorRandomAccess extends Versus {
 
   val kLOr = Range(1, 1000).toList
   val kVOr = Range(1, 1000).toVector

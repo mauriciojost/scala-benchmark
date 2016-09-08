@@ -1,8 +1,8 @@
-package org.mauritania.scalatest.algorithms.catalog
+package org.mauritania.minibenchmark.catalog
 
-import org.mauritania.scalatest.algorithms.{Algorithm, Comparables}
+import org.mauritania.minibenchmark.{Algorithm, Versus}
 
-object SeqVsListSum extends Comparables {
+object SeqVsListSum extends Versus {
 
   val l = Range(1, 1000).toList
   val s = Range(1, 1000).toSeq

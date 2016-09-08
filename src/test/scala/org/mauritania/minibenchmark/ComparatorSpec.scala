@@ -1,7 +1,7 @@
-package org.mauritania.scalatest
+package org.mauritania.minibenchmark
 
-import org.mauritania.scalatest.algorithms.catalog.{IdentityX4, IdentityX2, Identity}
-import org.mauritania.scalatest.result.Report
+import org.mauritania.minibenchmark.catalog.{IdentityX4, IdentityX2, Identity}
+import org.mauritania.minibenchmark.reporting.Report
 import org.scalatest.{FunSuite, Matchers}
 
 class ComparatorSpec extends FunSuite with Matchers {
@@ -12,7 +12,7 @@ class ComparatorSpec extends FunSuite with Matchers {
 
   test("report similar times for identity algorithms") {
 
-    val report = Comparator.testComparables(Identity, Seed, Iterations)
+    val report = VersusBenchmark.benchmark(Identity, Seed, Iterations)
 
     val (smaller, greater) = extractDurationsOrdered(report)
     val ratio = (smaller / greater)
@@ -25,7 +25,7 @@ class ComparatorSpec extends FunSuite with Matchers {
 
   test("report corresponding times for identityX2 algorithms") {
 
-    val report = Comparator.testComparables(IdentityX2, Seed, Iterations)
+    val report = VersusBenchmark.benchmark(IdentityX2, Seed, Iterations)
 
     val (smaller, greater) = extractDurationsOrdered(report)
     val ratio = (smaller / greater)
@@ -38,7 +38,7 @@ class ComparatorSpec extends FunSuite with Matchers {
 
   test("report corresponding times for identityX4 algorithms") {
 
-    val report = Comparator.testComparables(IdentityX4, Seed, Iterations)
+    val report = VersusBenchmark.benchmark(IdentityX4, Seed, Iterations)
 
     val (smaller, greater) = extractDurationsOrdered(report)
     val ratio = (smaller / greater)
