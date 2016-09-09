@@ -6,8 +6,8 @@ import org.scalatest.{FunSuite, Matchers}
 
 class ComparatorSpec extends FunSuite with Matchers {
 
-  val Seed = 100000
-  val Iterations = 100
+  val Seed = 20000
+  val Iterations = 200
   val Tolerance = 0.05F
 
   test("report similar times for identity algorithms") {
