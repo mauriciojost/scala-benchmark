@@ -7,8 +7,8 @@ import org.scalatest.{FunSuite, Matchers}
 class ComparatorSpec extends FunSuite with Matchers {
 
   val Seed = 20000
-  val Iterations = 200
-  val Tolerance = 0.05F
+  val Iterations = 500
+  val Tolerance = 0.10F
 
   test("report similar times for identity algorithms") {
 
@@ -16,12 +16,12 @@ class ComparatorSpec extends FunSuite with Matchers {
 
     val (smaller, greater) = extractDurationsOrdered(report)
     val ratio = (smaller / greater)
-    val expectedRatio = 1.0
+    val expectedRatio = 1.0 // very similar one to the other
 
-    ratio should be > expectedRatio - Tolerance // very similar one to the other
+    ratio should be > expectedRatio - Tolerance
+    ratio should be < expectedRatio + Tolerance
 
   }
-
 
   test("report corresponding times for identityX2 algorithms") {
 
@@ -29,7 +29,7 @@ class ComparatorSpec extends FunSuite with Matchers {
 
     val (smaller, greater) = extractDurationsOrdered(report)
     val ratio = (smaller / greater)
-    val expectedRatio = 0.5
+    val expectedRatio = 0.5 // right half
 
     ratio should be > expectedRatio - Tolerance
     ratio should be < expectedRatio + Tolerance
