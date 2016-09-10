@@ -1,7 +1,7 @@
-package org.mauritania.minibenchmark.catalog
+package org.mauritania
 
-import org.mauritania.mauritania._
 import org.openjdk.jmh.annotations.Benchmark
+import org.mauritania.Const.seed
 
 class Identity {
 

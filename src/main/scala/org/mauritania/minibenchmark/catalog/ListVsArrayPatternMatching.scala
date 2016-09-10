@@ -1,17 +1,9 @@
 package org.mauritania.minibenchmark.catalog
 
-import org.openjdk.jmh.annotations.{Scope, Benchmark, State}
+import org.mauritania.mauritania._
+import org.openjdk.jmh.annotations.Benchmark
 
 class ListVsArrayPatternMatching {
-
-  @State(Scope.Benchmark)
-  val seed = 1000
-
-  @State(Scope.Benchmark)
-  val aList = Range(1, 500).toList
-
-  @State(Scope.Benchmark)
-  val anArray = Range(1, 500).toArray
 
   @Benchmark
   def patternMatchOnList(): Int = {

@@ -1,11 +1,9 @@
 package org.mauritania.minibenchmark.catalog
 
-import org.openjdk.jmh.annotations.{Scope, State, Benchmark}
+import org.mauritania.mauritania._
+import org.openjdk.jmh.annotations.Benchmark
 
 class IdentityX4 {
-
-  @State(Scope.Benchmark)
-  val seed = 1000
 
   private def fX(seed: Int): Int = Range(1, seed).toList.sum
 
