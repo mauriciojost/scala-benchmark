@@ -1,15 +1,16 @@
 package org.mauritania.minibenchmark.catalog
 
-import org.mauritania.minibenchmark.{Algorithm, Versus}
+import org.openjdk.jmh.annotations.{Scope, Benchmark, State}
 
 import scala.annotation.tailrec
 
-class TailRecursive extends Versus {
+class TailRecursive {
 
-  override val a = Algorithm("Head recursion", fA)
-  override val b = Algorithm("Tail recursion", fB)
+  @State(Scope.Benchmark)
+  val seed = 1000
 
-  private def fA(seed: Int): Int = {
+  @Benchmark
+  def headRecursion(): Int = {
     val range = Range(1, seed).toList
     def sum(values: Seq[Int]): Int = {
       values match {
@@ -21,7 +22,8 @@ class TailRecursive extends Versus {
     sum(range)
   }
 
-  private def fB(seed: Int): Int = {
+  @Benchmark
+  def tailRecursion(): Int = {
     val range = Range(1, seed).toList
     @tailrec
     def sum(acum: Int, values: List[Int]): Int = {

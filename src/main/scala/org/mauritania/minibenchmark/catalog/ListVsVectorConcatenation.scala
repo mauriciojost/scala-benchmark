@@ -1,21 +1,26 @@
 package org.mauritania.minibenchmark.catalog
 
-import org.mauritania.minibenchmark.{Algorithm, Versus}
+import org.openjdk.jmh.annotations.{Scope, Benchmark, State}
 
-class ListVsVectorConcatenation extends Versus {
+class ListVsVectorConcatenation {
 
-  val kL = List(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
-  val kV = Vector(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+  @State(Scope.Benchmark)
+  val seed = 1000
 
-  override val a = Algorithm("List to ++", fA)
-  override val b = Algorithm("Vector to ++", fB)
+  @State(Scope.Benchmark)
+  val aList = List(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
 
-  private def fA(seed: Int): Int = {
-    Range(1, seed).map(i => kL).reduce(_++_).size
+  @State(Scope.Benchmark)
+  val aVector = Vector(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+
+  @Benchmark
+  def reduceList(): Int = {
+    Range(1, seed).map(i => aList).reduce(_++_).size
   }
 
-  private def fB(seed: Int): Int = {
-    Range(1, seed).map(i => kV).reduce(_++_).size
+  @Benchmark
+  def reduceVector(): Int = {
+    Range(1, seed).map(i => aVector).reduce(_++_).size
   }
 
 }

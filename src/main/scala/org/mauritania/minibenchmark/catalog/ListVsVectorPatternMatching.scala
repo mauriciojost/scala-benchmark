@@ -1,24 +1,29 @@
 package org.mauritania.minibenchmark.catalog
 
-import org.mauritania.minibenchmark.{Algorithm, Versus}
+import org.openjdk.jmh.annotations.{Scope, Benchmark, State}
 
-class ListVsVectorPatternMatching extends Versus {
+class ListVsVectorPatternMatching {
 
-  val kL = Range(1, 500).toList
-  val kV = Range(1, 500).toVector
+  @State(Scope.Benchmark)
+  val seed = 1000
 
-  override val a = Algorithm("List for pattern matching", fA)
-  override val b = Algorithm("Vector for pattern matching", fB)
+  @State(Scope.Benchmark)
+  val aList = Range(1, 500).toList
 
-  private def fA(seed: Int): Int = {
-    kL match {
+  @State(Scope.Benchmark)
+  val aVector = Range(1, 500).toVector
+
+  @Benchmark
+  def patternMatchingOnList(): Int = {
+    aList match {
       case a :: b :: c :: d :: e :: f :: g :: h :: i :: j :: k :: l :: m :: x => a + c + seed
       case _ => throw new RuntimeException()
     }
   }
 
-  private def fB(seed: Int): Int = {
-    kV match {
+  @Benchmark
+  def patternMatchingOnVector(): Int = {
+    aVector match {
       case a +: b +: c +: d +: e +: f +: g +: h +: i +: j +: k +: l +: m +: x => a + c + seed
       case _ => throw new RuntimeException()
     }

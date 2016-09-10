@@ -1,22 +1,27 @@
 package org.mauritania.minibenchmark.catalog
 
-import org.mauritania.minibenchmark.{Algorithm, Versus}
+import org.openjdk.jmh.annotations.{Scope, Benchmark, State}
 
-class ListVsVectorRandomAccess extends Versus {
+class ListVsVectorRandomAccess {
 
-  val kLOr = Range(1, 1000).toList
-  val kVOr = Range(1, 1000).toVector
+  @State(Scope.Benchmark)
+  val seed = 1000
 
-  override val a = Algorithm("List for random access", fA)
-  override val b = Algorithm("Vector for random access", fB)
+  @State(Scope.Benchmark)
+  val aList = Range(1, 1000).toList
 
-  private def fA(seed: Int): Int = {
-    val k = kLOr.reverse
+  @State(Scope.Benchmark)
+  val aVector = Range(1, 1000).toVector
+
+  @Benchmark
+  def randomAccessOnList(): Int = {
+    val k = aList.reverse
     k(0) + k(10) + k(20) + k(30) + k(40) + k(50) + k(60) + k(70) + k(80) + k(90) + k(190) + k(290) + k(391) + k(392) + k(393) + k(394)
   }
 
-  private def fB(seed: Int): Int = {
-    val k = kVOr.reverse
+  @Benchmark
+  def randomAccessOnVector(): Int = {
+    val k = aVector.reverse
     k(0) + k(10) + k(20) + k(30) + k(40) + k(50) + k(60) + k(70) + k(80) + k(90) + k(190) + k(290) + k(391) + k(392) + k(393) + k(394)
   }
 

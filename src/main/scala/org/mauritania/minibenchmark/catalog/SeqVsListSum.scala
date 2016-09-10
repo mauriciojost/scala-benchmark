@@ -1,21 +1,26 @@
 package org.mauritania.minibenchmark.catalog
 
-import org.mauritania.minibenchmark.{Algorithm, Versus}
+import org.openjdk.jmh.annotations.{Scope, Benchmark, State}
 
-class SeqVsListSum extends Versus {
+class SeqVsListSum {
 
-  val l = Range(1, 1000).toList
-  val s = Range(1, 1000).toSeq
+  @State(Scope.Benchmark)
+  val seed = 1000
 
-  override val a = Algorithm("List to sum", fA)
-  override val b = Algorithm("Seq to sum", fB)
+  @State(Scope.Benchmark)
+  val aList = Range(1, 1000).toList
 
-  private def fA(seed: Int): Int = {
-    l.sum
+  @State(Scope.Benchmark)
+  val aSeq = Range(1, 1000).toSeq
+
+  @Benchmark
+  def sumOnList(): Int = {
+    aList.sum
   }
 
-  private def fB(seed: Int): Int = {
-    s.sum
+  @Benchmark
+  def sumOnSeq(): Int = {
+    aSeq.sum
   }
 
 }

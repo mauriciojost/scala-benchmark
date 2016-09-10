@@ -1,15 +1,19 @@
 package org.mauritania.minibenchmark.catalog
 
-import org.mauritania.minibenchmark.{Algorithm, Versus}
+import org.openjdk.jmh.annotations.{Scope, State, Benchmark}
 
-class IdentityX2 extends Versus {
+class IdentityX2 {
 
-  override val a = Algorithm("identity0.5", fX05)
-  override val b = Algorithm("identity1.0", fX10)
+  @State(Scope.Benchmark)
+  val seed = 1000
 
-  private def fX(seed: Int): Int = Range(1, seed).toList.sum
-  private def fX05(seed: Int): Int = fX(seed / 2)
-  private def fX10(seed: Int): Int = fX(seed)
+  private def fX(p: Int): Int = Range(1, p).toList.sum
+
+  @Benchmark
+  def fX05(): Int = fX(seed / 2)
+
+  @Benchmark
+  def fX10(): Int = fX(seed)
 
 }
 
