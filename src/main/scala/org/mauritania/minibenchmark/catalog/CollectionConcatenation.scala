@@ -3,16 +3,21 @@ package org.mauritania.minibenchmark.catalog
 import org.mauritania.mauritania._
 import org.openjdk.jmh.annotations.Benchmark
 
-class ListVsArrayConcatenation {
+class CollectionConcatenation {
 
   @Benchmark
-  def reduceOnList(): Int = {
+  def concatenateOnList(): Int = {
     Range(1, seed).map(i => aList).reduce(_++_).size
   }
 
   @Benchmark
-  def reduceOnArray(): Int = {
+  def concatenateOnArray(): Int = {
     Range(1, seed).map(i => anArray).reduce(_++_).size
+  }
+
+  @Benchmark
+  def concatenateOnVector(): Int = {
+    Range(1, seed).map(i => aVector).reduce(_++_).size
   }
 
 }
