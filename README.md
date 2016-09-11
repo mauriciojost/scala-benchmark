@@ -7,6 +7,7 @@ This project aims to provide an empirical demonstration of the performance diffe
 ## How To Execute It
 
 ```
+sbt clean "jmh:run -help"
 sbt clean "jmh:run -i 3 -wi 3 -f1 -t1 .*Identity.*"
 ```
 
