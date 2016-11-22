@@ -25,5 +25,6 @@ sbt -Dsbt.log.noformat=true clean "jmh:run -rff output.csv  -i 10 -wi 10 -f1 -t1
 ## What Is Pending
 
 - Add arguments to benchmarked functions (to make sure the JVM does not guess the results)
+
 - Access benchmark results programatically and generate reports (not needed)
-- 
+
