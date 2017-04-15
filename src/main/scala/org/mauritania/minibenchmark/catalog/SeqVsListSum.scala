@@ -7,12 +7,12 @@ class SeqVsListSum {
 
   @Benchmark
   def sumOnList(): Int = {
-    aList.sum
+    BaseList.sum
   }
 
   @Benchmark
   def sumOnSeq(): Int = {
-    aSeq.sum
+    BaseSeq.sum
   }
 
 }

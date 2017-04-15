@@ -9,7 +9,7 @@ class TailRecursive {
 
   @Benchmark
   def headRecursion(): Int = {
-    val range = Range(1, seed).toList
+    val range = Range(1, Seed).toList
     def sum(values: Seq[Int]): Int = {
       values match {
         case Nil => 0
@@ -22,7 +22,7 @@ class TailRecursive {
 
   @Benchmark
   def tailRecursion(): Int = {
-    val range = Range(1, seed).toList
+    val range = Range(1, Seed).toList
     @tailrec
     def sum(acum: Int, values: List[Int]): Int = {
       values match {

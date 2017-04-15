@@ -7,19 +7,19 @@ class CollectionRandomAccess {
 
   @Benchmark
   def randomAccessOnArray(): Int = {
-    val k = anArray
+    val k = BaseArray
     k(7) + k(1) + k(8) + k(k(1)) + k(5) + k(9) + k(4)
   }
 
   @Benchmark
   def randomAccessOnList(): Int = {
-    val k = aList
+    val k = BaseList
     k(7) + k(1) + k(8) + k(k(1)) + k(5) + k(9) + k(4)
   }
 
   @Benchmark
   def randomAccessOnVector(): Int = {
-    val k = aVector
+    val k = BaseVector
     k(7) + k(1) + k(8) + k((k(1))) + k(5) + k(9) + k(4)
   }
 

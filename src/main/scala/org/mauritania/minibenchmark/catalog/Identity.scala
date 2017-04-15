@@ -7,22 +7,22 @@ class Identity {
 
   @Benchmark
   def identity(): Int = {
-    Range(1, seed).toList.sum
+    LargeList.sum
   }
 
   @Benchmark
   def identitySame(): Int = {
-    Range(1, seed).toList.sum
+    LargeList.sum
   }
 
   @Benchmark
   def identityBy2(): Int = {
-    Range(1, seed / 2).toList.sum
+    HalfLargeList.sum
   }
 
   @Benchmark
   def identityBy4(): Int = {
-    Range(1, seed / 4).toList.sum
+    QuarterLargeList.sum
   }
 
 }
