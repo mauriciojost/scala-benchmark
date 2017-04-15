@@ -12,9 +12,9 @@ do
   OUTPUT_CSV_NAME=$category.csv
   OUTPUT_CSV=output/$OUTPUT_CSV_NAME
   OUTPUT_HTML=output/$category.html
-  #cat $RAW_CSV | grep $category | awk -F',' '{print $1}' | sed 's/"//g' | sed "s/$category\.//"
-  cat $RAW_CSV | head -1 | sed 's/"//g' > $OUTPUT_CSV
-  cat $RAW_CSV | grep $category | sed 's/"//g' | sed "s/$category\.//" >> $OUTPUT_CSV
+
+  cat $RAW_CSV | head -1 | sed 's/"//g' | awk -F',' '{print $1","$5","$6}' > $OUTPUT_CSV
+  cat $RAW_CSV | grep $category | sed 's/"//g' | sed "s/$category\.//" | awk -F',' '{print $1","$5","$6}' >> $OUTPUT_CSV
 
   cat $TEMPLATE_HTML | sed "s/TO_REPLACE_TITLE/$category/g" | sed "s/TO_REPLACE_CSV/$OUTPUT_CSV_NAME/g" > $OUTPUT_HTML
 
