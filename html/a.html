@@ -8,7 +8,7 @@
         margin-top: 30px;
         margin-left:40px;
         }
-        pre	{
+        pre {
         border:1px solid red;
         }
 
@@ -24,28 +24,6 @@
 </div>
 
 <div id="container" style="width:1024px; min-width: 310px; height: 400px; margin: 0 auto"></div>
-<pre id="csv" style="display:none">
-"Benchmark","Mode","Threads","Samples","Score","Score Error (99.9%)","Unit"
-"org.mauritania.minibenchmark.catalog.BoxingUnboxing.noBoxing","thrpt",1,10,10125.278114,1166.348288,"ops/s"
-"org.mauritania.minibenchmark.catalog.BoxingUnboxing.withBoxing","thrpt",1,10,14195.787993,2063.080451,"ops/s"
-"org.mauritania.minibenchmark.catalog.CollectionConcatenation.concatenateOnArray","thrpt",1,10,51.353513,5.586272,"ops/s"
-"org.mauritania.minibenchmark.catalog.CollectionConcatenation.concatenateOnList","thrpt",1,10,3.502296,0.188876,"ops/s"
-"org.mauritania.minibenchmark.catalog.CollectionPatternMatching.patternMatchOnList","thrpt",1,10,34554496.095092,2779877.285984,"ops/s"
-"org.mauritania.minibenchmark.catalog.CollectionPatternMatching.patternMatchingOnVector","thrpt",1,10,383050.659754,53811.550486,"ops/s"
-"org.mauritania.minibenchmark.catalog.CollectionRandomAccess.randomAccessOnArray","thrpt",1,10,105364434.242691,11237004.778720,"ops/s"
-"org.mauritania.minibenchmark.catalog.CollectionRandomAccess.randomAccessOnList","thrpt",1,10,16996662.490313,9246239.949011,"ops/s"
-"org.mauritania.minibenchmark.catalog.CollectionRandomAccess.randomAccessOnVector","thrpt",1,10,53924385.772230,20890913.517482,"ops/s"
-"org.mauritania.minibenchmark.catalog.Identity.identity","thrpt",1,10,36239.354387,6002.463548,"ops/s"
-"org.mauritania.minibenchmark.catalog.Identity.identityBy2","thrpt",1,10,19700.677517,5478.818587,"ops/s"
-"org.mauritania.minibenchmark.catalog.Identity.identityBy4","thrpt",1,10,43148.430906,8414.083340,"ops/s"
-"org.mauritania.minibenchmark.catalog.Identity.identitySame","thrpt",1,10,14203.000824,10190.689600,"ops/s"
-"org.mauritania.minibenchmark.catalog.PartialFunctions.filterAndMap","thrpt",1,10,39818.561134,22901.830109,"ops/s"
-"org.mauritania.minibenchmark.catalog.PartialFunctions.partialFunction","thrpt",1,10,33709.318561,5409.354932,"ops/s"
-"org.mauritania.minibenchmark.catalog.SeqVsListSum.sumOnList","thrpt",1,10,5052047.770607,322762.451612,"ops/s"
-"org.mauritania.minibenchmark.catalog.SeqVsListSum.sumOnSeq","thrpt",1,10,4868726.602004,389667.481504,"ops/s"
-"org.mauritania.minibenchmark.catalog.TailRecursive.headRecursion","thrpt",1,10,11941.635481,1118.838599,"ops/s"
-"org.mauritania.minibenchmark.catalog.TailRecursive.tailRecursion","thrpt",1,10,22552.821054,6500.775707,"ops/s"
-</pre>
 <script type="text/javascript">
 
 var options = {
@@ -68,32 +46,36 @@ var options = {
 };
 
     $.get('data.csv', function(data) {
-    // Split the lines
     var lines = data.split('\n');
 
     // Iterate over the lines and add categories or series
     $.each(lines, function(lineNo, line) {
+
+        console.log('Parsing line: ' + line)
+
         var items = line.split(',');
 
-        // header line containes categories
+        // header line contains categories
         if (lineNo == 0) {
             $.each(items, function(itemNo, item) {
-                console.log('line: ' + line)
+                console.log('Pushing category: ' + item)
                 if (itemNo > 0) options.xAxis.categories.push(item);
             });
-        }
+        } else {
 
-        // the rest of the lines contain data with their name in the first
-        // position
-        else {
+            // the rest of the lines contain data with their name in the first
+            // position
+
             var series = {
                 data: []
             };
             $.each(items, function(itemNo, item) {
                 if (itemNo == 0) {
                     series.name = item;
+                    console.log('Pushing item category: ' + item)
                 } else {
                     series.data.push(parseFloat(item));
+                    console.log('Pushing item value: ' + item)
                 }
             });
 
@@ -106,6 +88,7 @@ var options = {
     // Create the chart
     var chart = new Highcharts.Chart(options);
     });
+
 </script>
 </body>
 </html>
