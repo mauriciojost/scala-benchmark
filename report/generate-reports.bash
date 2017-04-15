@@ -11,7 +11,9 @@ export TEMPLATE_HTML=template.html
 export CURRDIR=`readlink -e $(dirname $0)`
 
 cd $CURRDIR/../
-sbt -Dsbt.log.noformat=true clean "jmh:run -rff report/input/output.csv  -i $ITERATIONS -wi $WARMUP_ITERATIIONS -f1 -t1 .*"
+# Show scala phases
+scala -Xshow-phases
+sbt 'set scalacOptions ++=Seq("-Xprint:namer")' -Dsbt.log.noformat=true clean "jmh:run -rff report/input/output.csv  -i $ITERATIONS -wi $WARMUP_ITERATIIONS -f1 -t1 .*"
 
 cd $CURRDIR
 cat $RAW_CSV | awk -F',' '{print $1}' | sed 's/"//g' | sed 's/\(.*\)\..*/\1/' | sort | uniq | tail -n+2 > $CATEGORIES
