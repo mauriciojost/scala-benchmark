@@ -7,22 +7,17 @@ class IdentityTricky {
 
   @Benchmark
   def identity(): Int = {
-    LargeList.sum
+    Range(1, Seed).sum
   }
 
   @Benchmark
   def identitySame(): Int = {
-    LargeList.sum
+    Range(1, Seed).sum
   }
 
   @Benchmark
   def identityBy2(): Int = {
-    HalfLargeList.sum
-  }
-
-  @Benchmark
-  def identityBy4(): Int = {
-    QuarterLargeList.sum
+    Range(1, Seed/2).sum
   }
 
 }
