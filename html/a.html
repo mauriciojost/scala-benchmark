@@ -11,7 +11,6 @@
         pre {
         border:1px solid red;
         }
-
     </style>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="http://code.highcharts.com/highcharts.js"></script>
@@ -45,16 +44,13 @@ var options = {
     series: []
 };
 
-    $.get('data.csv', function(data) {
+$.get('data1.csv', function(data) {
     var lines = data.split('\n');
 
     // Iterate over the lines and add categories or series
     $.each(lines, function(lineNo, line) {
-
         console.log('Parsing line: ' + line)
-
         var items = line.split(',');
-
         // header line contains categories
         if (lineNo == 0) {
             $.each(items, function(itemNo, item) {
@@ -62,10 +58,8 @@ var options = {
                 if (itemNo > 0) options.xAxis.categories.push(item);
             });
         } else {
-
             // the rest of the lines contain data with their name in the first
             // position
-
             var series = {
                 data: []
             };
@@ -78,16 +72,14 @@ var options = {
                     console.log('Pushing item value: ' + item)
                 }
             });
-
-            options.series.push(series);
-
+            if (series.data.length != 0) {
+                options.series.push(series);
+            }
         }
-
     });
-
     // Create the chart
     var chart = new Highcharts.Chart(options);
-    });
+});
 
 </script>
 </body>
