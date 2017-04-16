@@ -79,7 +79,7 @@ var orgmauritaniaminibenchmarkcatalogBoxingUnboxingOptions = {
     },
     yAxis: {
         title: {
-            text: 'ops per s'
+            text: 'ops per s'
         }
     },
     series: []
@@ -137,7 +137,7 @@ var orgmauritaniaminibenchmarkcatalogCollectionConcatenationOptions = {
     },
     yAxis: {
         title: {
-            text: 'ops per s'
+            text: 'ops per s'
         }
     },
     series: []
@@ -195,7 +195,7 @@ var orgmauritaniaminibenchmarkcatalogCollectionPatternMatchingOptions = {
     },
     yAxis: {
         title: {
-            text: 'ops per s'
+            text: 'ops per s'
         }
     },
     series: []
@@ -253,7 +253,7 @@ var orgmauritaniaminibenchmarkcatalogCollectionRandomAccessOptions = {
     },
     yAxis: {
         title: {
-            text: 'ops per s'
+            text: 'ops per s'
         }
     },
     series: []
@@ -311,7 +311,7 @@ var orgmauritaniaminibenchmarkcatalogIdentityOptions = {
     },
     yAxis: {
         title: {
-            text: 'ops per s'
+            text: 'ops per s'
         }
     },
     series: []
@@ -369,7 +369,7 @@ var orgmauritaniaminibenchmarkcatalogIdentityTrickyOptions = {
     },
     yAxis: {
         title: {
-            text: 'ops per s'
+            text: 'ops per s'
         }
     },
     series: []
@@ -427,7 +427,7 @@ var orgmauritaniaminibenchmarkcatalogPartialFunctionsOptions = {
     },
     yAxis: {
         title: {
-            text: 'ops per s'
+            text: 'ops per s'
         }
     },
     series: []
@@ -485,7 +485,7 @@ var orgmauritaniaminibenchmarkcatalogSeqVsListSumOptions = {
     },
     yAxis: {
         title: {
-            text: 'ops per s'
+            text: 'ops per s'
         }
     },
     series: []
@@ -543,7 +543,7 @@ var orgmauritaniaminibenchmarkcatalogTailRecursiveOptions = {
     },
     yAxis: {
         title: {
-            text: 'ops per s'
+            text: 'ops per s'
         }
     },
     series: []
