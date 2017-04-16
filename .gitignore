@@ -11,6 +11,5 @@
 extras/packager/output/
 extras/packager/tmp/
 /output.csv
-/report/output/
 /report/input/categories.csv
 /report/input/output.csv
