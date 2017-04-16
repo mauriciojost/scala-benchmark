@@ -1,5 +1,6 @@
 #!/bin/bash
 
+set -e
 # Benchmark settings
 export ITERATIONS=4
 export WARMUP_ITERATIIONS=3
@@ -21,9 +22,9 @@ export CURRDIR=`readlink -e $(dirname $0)`
 export OUTPUT_HTML=$CURRDIR/../README.md
 
 cd $CURRDIR/../
-# Show scala phases
+echo "### Show scala phases"
 scala -Xshow-phases
-# Generate raw data
+echo "### Generate raw data"
 sbt 'set scalacOptions ++=Seq("-Xprint:namer")' \
   -Dsbt.log.noformat=true \
   clean \
@@ -32,22 +33,26 @@ sbt 'set scalacOptions ++=Seq("-Xprint:namer")' \
 cd $CURRDIR
 cat $RAW_CSV | awk -F',' '{print $1}' | sed 's/"//g' | sed 's/\(.*\)\..*/\1/' | sort | uniq | tail -n+2 > $CATEGORIES
 
+echo "### Write header"
 cat $HEADER_HTML > $OUTPUT_HTML
 
+echo "### Write divs"
 while read -r category
 do
   CHART_ID=`echo $category | sed "s/\.//g"`
   cat $DIV_HTML | sed "s/TO_REPLACE_CHART_ID/$CHART_ID/g" >> $OUTPUT_HTML
 done < "$CATEGORIES"
 
+echo "### Write scripts"
 cat $INITSCRIPT_HTML >> $OUTPUT_HTML
 
 while read -r category
 do
   CHART_ID=`echo $category | sed "s/\.//g"`
+  echo "     For $category ..."
   OUTPUT_CSV_NAME=$category.csv
   OUTPUT_CSV=output/$OUTPUT_CSV_NAME
-  UNITS="`cat $RAW_CSV | tail -n+2 | sed 's/"//g' | awk -F',' '{print $7}' | sed 's/\// per /g' | head`"
+  UNITS="`cat $RAW_CSV | tail -n+2 | sed 's/"//g' | awk -F',' '{print $7}' | sed 's/\// per /g' | head -1`"
 
   cat $RAW_CSV | head -1 | sed 's/"//g' | awk -F',' '{print $1","$5","$6}' > $OUTPUT_CSV
   cat $RAW_CSV | grep "$category\." | sed 's/"//g' | sed "s/$category\.//" | awk -F',' '{print $1","$5","$6}' >> $OUTPUT_CSV
@@ -60,5 +65,6 @@ do
 
 done < "$CATEGORIES"
 
+echo "### Write tail"
 cat $ENDSCRIPT_HTML >> $OUTPUT_HTML
 cat $TAIL_HTML >> $OUTPUT_HTML

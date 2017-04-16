@@ -1,4 +1,40 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+# README
+
+This project aims to provide an empirical demonstration of the performance difference of similar (but not equal) algorithms.
+
+It uses JMH under the hood for micro benchmarking.
+
+## Execution
+
+To execute the benchmarks using SBT just do:
+
+```
+sbt clean "jmh:run -help"
+sbt clean "jmh:run -i 3 -wi 3 -f1 -t1 .*Identity.*"
+```
+
+## Reporting
+
+Launch the reports generation script as follows:
+
+```
+cd report
+bash generate-reports.bash
+```
+
+Also you may want to have a jenkins Job to generate regular reports on the performance of bencharmked functions. I recommend [jmh-jenkins](https://github.com/blackboard/jmh-jenkins) with a job like this one:
+
+```
+sbt -Dsbt.log.noformat=true clean "jmh:run -rff report/input/output.csv  -i 10 -wi 10 -f1 -t1 .*"
+
+```
+
+# Findings from the catalog
+
+The catalog with all Scala algorithms being benchmarked is [here](src/main/scala/org/mauritania/minibenchmark/catalog).
+
+You can easily add yours by forking the project.
+
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -43,13 +79,13 @@ var orgmauritaniaminibenchmarkcatalogBoxingUnboxingOptions = {
     },
     yAxis: {
         title: {
-            text: 'ops per s '
+            text: 'ops per s'
         }
     },
     series: []
 };
 
-$.get('org.mauritania.minibenchmark.catalog.BoxingUnboxing.csv', function(data) {
+$.get('report/output/org.mauritania.minibenchmark.catalog.BoxingUnboxing.csv', function(data) {
     var lines = data.split('\n');
 
     // Iterate over the lines and add categories or series
@@ -101,13 +137,13 @@ var orgmauritaniaminibenchmarkcatalogCollectionConcatenationOptions = {
     },
     yAxis: {
         title: {
-            text: 'ops per s '
+            text: 'ops per s'
         }
     },
     series: []
 };
 
-$.get('org.mauritania.minibenchmark.catalog.CollectionConcatenation.csv', function(data) {
+$.get('report/output/org.mauritania.minibenchmark.catalog.CollectionConcatenation.csv', function(data) {
     var lines = data.split('\n');
 
     // Iterate over the lines and add categories or series
@@ -159,13 +195,13 @@ var orgmauritaniaminibenchmarkcatalogCollectionPatternMatchingOptions = {
     },
     yAxis: {
         title: {
-            text: 'ops per s '
+            text: 'ops per s'
         }
     },
     series: []
 };
 
-$.get('org.mauritania.minibenchmark.catalog.CollectionPatternMatching.csv', function(data) {
+$.get('report/output/org.mauritania.minibenchmark.catalog.CollectionPatternMatching.csv', function(data) {
     var lines = data.split('\n');
 
     // Iterate over the lines and add categories or series
@@ -217,13 +253,13 @@ var orgmauritaniaminibenchmarkcatalogCollectionRandomAccessOptions = {
     },
     yAxis: {
         title: {
-            text: 'ops per s '
+            text: 'ops per s'
         }
     },
     series: []
 };
 
-$.get('org.mauritania.minibenchmark.catalog.CollectionRandomAccess.csv', function(data) {
+$.get('report/output/org.mauritania.minibenchmark.catalog.CollectionRandomAccess.csv', function(data) {
     var lines = data.split('\n');
 
     // Iterate over the lines and add categories or series
@@ -275,13 +311,13 @@ var orgmauritaniaminibenchmarkcatalogIdentityOptions = {
     },
     yAxis: {
         title: {
-            text: 'ops per s '
+            text: 'ops per s'
         }
     },
     series: []
 };
 
-$.get('org.mauritania.minibenchmark.catalog.Identity.csv', function(data) {
+$.get('report/output/org.mauritania.minibenchmark.catalog.Identity.csv', function(data) {
     var lines = data.split('\n');
 
     // Iterate over the lines and add categories or series
@@ -333,13 +369,13 @@ var orgmauritaniaminibenchmarkcatalogIdentityTrickyOptions = {
     },
     yAxis: {
         title: {
-            text: 'ops per s '
+            text: 'ops per s'
         }
     },
     series: []
 };
 
-$.get('org.mauritania.minibenchmark.catalog.IdentityTricky.csv', function(data) {
+$.get('report/output/org.mauritania.minibenchmark.catalog.IdentityTricky.csv', function(data) {
     var lines = data.split('\n');
 
     // Iterate over the lines and add categories or series
@@ -391,13 +427,13 @@ var orgmauritaniaminibenchmarkcatalogPartialFunctionsOptions = {
     },
     yAxis: {
         title: {
-            text: 'ops per s '
+            text: 'ops per s'
         }
     },
     series: []
 };
 
-$.get('org.mauritania.minibenchmark.catalog.PartialFunctions.csv', function(data) {
+$.get('report/output/org.mauritania.minibenchmark.catalog.PartialFunctions.csv', function(data) {
     var lines = data.split('\n');
 
     // Iterate over the lines and add categories or series
@@ -449,13 +485,13 @@ var orgmauritaniaminibenchmarkcatalogSeqVsListSumOptions = {
     },
     yAxis: {
         title: {
-            text: 'ops per s '
+            text: 'ops per s'
         }
     },
     series: []
 };
 
-$.get('org.mauritania.minibenchmark.catalog.SeqVsListSum.csv', function(data) {
+$.get('report/output/org.mauritania.minibenchmark.catalog.SeqVsListSum.csv', function(data) {
     var lines = data.split('\n');
 
     // Iterate over the lines and add categories or series
@@ -507,13 +543,13 @@ var orgmauritaniaminibenchmarkcatalogTailRecursiveOptions = {
     },
     yAxis: {
         title: {
-            text: 'ops per s '
+            text: 'ops per s'
         }
     },
     series: []
 };
 
-$.get('org.mauritania.minibenchmark.catalog.TailRecursive.csv', function(data) {
+$.get('report/output/org.mauritania.minibenchmark.catalog.TailRecursive.csv', function(data) {
     var lines = data.split('\n');
 
     // Iterate over the lines and add categories or series
