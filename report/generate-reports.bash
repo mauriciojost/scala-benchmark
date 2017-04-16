@@ -52,7 +52,7 @@ do
   echo "     For $category ..."
   OUTPUT_CSV_NAME=$category.csv
   OUTPUT_CSV=output/$OUTPUT_CSV_NAME
-  UNITS="`cat $RAW_CSV | tail -n+2 | sed 's/"//g' | awk -F',' '{print $7}' | sed 's/\// per /g' | head -1`"
+  UNITS="`cat $RAW_CSV | tail -n+2 | sed 's/"//g' | sed 's/\// per /g' | awk -F',' '{print $7}' | head -1 | sed 's/[^ a-zA-Z0-9]//g' `"
 
   cat $RAW_CSV | head -1 | sed 's/"//g' | awk -F',' '{print $1","$5","$6}' > $OUTPUT_CSV
   cat $RAW_CSV | grep "$category\." | sed 's/"//g' | sed "s/$category\.//" | awk -F',' '{print $1","$5","$6}' >> $OUTPUT_CSV
