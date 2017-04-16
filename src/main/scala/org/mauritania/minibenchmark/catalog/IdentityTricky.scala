@@ -20,6 +20,11 @@ class IdentityTricky {
     Range(1, Seed/2).sum
   }
 
+  @Benchmark
+  def identityBy4(): Int = {
+    Range(1, Seed/4).sum
+  }
+
 }
 
 

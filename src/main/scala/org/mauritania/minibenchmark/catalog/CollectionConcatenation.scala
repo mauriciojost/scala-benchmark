@@ -7,17 +7,17 @@ class CollectionConcatenation {
 
   @Benchmark
   def concatenateOnList(): Int = {
-    Range(1, Seed).map(i => BaseList).reduce(_++_).size
+    ARange.map(i => BaseList).reduce(_++_).sum
   }
 
   @Benchmark
   def concatenateOnArray(): Int = {
-    Range(1, Seed).map(i => BaseArray).reduce(_++_).size
+    ARange.map(i => BaseArray).reduce(_++_).sum
   }
 
   @Benchmark
   def concatenateOnVector(): Int = {
-    Range(1, Seed).map(i => BaseVector).reduce(_++_).size
+    ARange.map(i => BaseVector).reduce(_++_).sum
   }
 
 }
