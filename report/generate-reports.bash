@@ -2,8 +2,8 @@
 
 set -e
 # Benchmark settings
-export ITERATIONS=4
-export WARMUP_ITERATIIONS=3
+export ITERATIONS=5
+export WARMUP_ITERATIIONS=5
 #export BENCHMARK_MODE=AverageTime
 export BENCHMARK_MODE=Throughput
 
