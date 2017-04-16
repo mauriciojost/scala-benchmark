@@ -1,4 +1,4 @@
 Benchmark,Score,Score Error (99.9%)
-randomAccessOnArray,214782553.100598,NaN
-randomAccessOnList,30024820.503938,NaN
-randomAccessOnVector,84077741.990264,NaN
+randomAccessOnArray,245384923.854878,3367461.569719
+randomAccessOnList,33953226.338665,75985.568228
+randomAccessOnVector,87138973.561901,2985517.093785

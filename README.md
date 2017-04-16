@@ -4,41 +4,16 @@ This project aims to provide an empirical demonstration of the performance diffe
 
 It uses JMH under the hood for micro benchmarking.
 
-## Execution
-
-To execute the benchmarks using SBT just do:
-
-```
-sbt clean "jmh:run -help"
-sbt clean "jmh:run -i 3 -wi 3 -f1 -t1 .*Identity.*"
-```
-
-## Reporting
-
-Launch the reports generation script as follows:
-
-```
-cd report
-bash generate-reports.bash
-```
-
-Also you may want to have a jenkins Job to generate regular reports on the performance of bencharmked functions. I recommend [jmh-jenkins](https://github.com/blackboard/jmh-jenkins) with a job like this one:
-
-```
-sbt -Dsbt.log.noformat=true clean "jmh:run -rff report/input/output.csv  -i 10 -wi 10 -f1 -t1 .*"
-
-```
-
 # Findings from the catalog
 
-The catalog with all Scala algorithms being benchmarked is [here](src/main/scala/org/mauritania/minibenchmark/catalog).
+The catalog with all Scala algorithms being benchmarked is [here](https://github.com/mauriciojost/scala-ubenchmark/tree/master/src/main/scala/org/mauritania/minibenchmark/catalog).
 
 You can easily add yours by forking the project.
 
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Scala Benchmarking</title>
+    <title>Scala Micro Benchmarking</title>
     <style>
         body{
         margin-top: 30px;
@@ -54,9 +29,8 @@ You can easily add yours by forking the project.
     <script src="http://code.highcharts.com/modules/exporting.js"></script>
 </head>
 <body>
-<h1>Scala Benchmarking</h1>
+<h1>Scala Micro Benchmarking</h1>
 
-<div id="orgmauritaniaminibenchmarkcatalogBoxingUnboxingcontainer" style="width:1024px; min-width: 310px; height: 400px; margin: 0 auto"></div>
 <div id="orgmauritaniaminibenchmarkcatalogCollectionConcatenationcontainer" style="width:1024px; min-width: 310px; height: 400px; margin: 0 auto"></div>
 <div id="orgmauritaniaminibenchmarkcatalogCollectionPatternMatchingcontainer" style="width:1024px; min-width: 310px; height: 400px; margin: 0 auto"></div>
 <div id="orgmauritaniaminibenchmarkcatalogCollectionRandomAccesscontainer" style="width:1024px; min-width: 310px; height: 400px; margin: 0 auto"></div>
@@ -66,64 +40,6 @@ You can easily add yours by forking the project.
 <div id="orgmauritaniaminibenchmarkcatalogSeqVsListSumcontainer" style="width:1024px; min-width: 310px; height: 400px; margin: 0 auto"></div>
 <div id="orgmauritaniaminibenchmarkcatalogTailRecursivecontainer" style="width:1024px; min-width: 310px; height: 400px; margin: 0 auto"></div>
 <script type="text/javascript">
-var orgmauritaniaminibenchmarkcatalogBoxingUnboxingOptions = {
-    chart: {
-        renderTo: 'orgmauritaniaminibenchmarkcatalogBoxingUnboxingcontainer',
-        defaultSeriesType: 'column'
-    },
-    title: {
-        text: 'org.mauritania.minibenchmark.catalog.BoxingUnboxing'
-    },
-    xAxis: {
-        categories: []
-    },
-    yAxis: {
-        title: {
-            text: 'ops per s'
-        }
-    },
-    series: []
-};
-
-$.get('report/output/org.mauritania.minibenchmark.catalog.BoxingUnboxing.csv', function(data) {
-    var lines = data.split('\n');
-
-    // Iterate over the lines and add categories or series
-    $.each(lines, function(lineNo, line) {
-        console.log('Parsing line: ' + line)
-        var items = line.split(',');
-        // header line contains categories
-        if (lineNo == 0) {
-            $.each(items, function(itemNo, item) {
-                console.log('Pushing category: ' + item)
-                if (itemNo > 0) orgmauritaniaminibenchmarkcatalogBoxingUnboxingOptions.xAxis.categories.push(item);
-            });
-        } else {
-            // the rest of the lines contain data with their name in the first
-            // position
-            var series = {
-                data: []
-            };
-            $.each(items, function(itemNo, item) {
-                if (itemNo == 0) {
-                    series.name = item;
-                    console.log('Pushing item category: ' + item)
-                } else {
-                    series.data.push(parseFloat(item));
-                    console.log('Pushing item value: ' + item)
-                }
-            });
-            if (series.data.length != 0) {
-                orgmauritaniaminibenchmarkcatalogBoxingUnboxingOptions.series.push(series);
-            }
-        }
-    });
-    // Create the chart
-    var chart = new Highcharts.Chart(orgmauritaniaminibenchmarkcatalogBoxingUnboxingOptions);
-
-});
-
-
 var orgmauritaniaminibenchmarkcatalogCollectionConcatenationOptions = {
     chart: {
         renderTo: 'orgmauritaniaminibenchmarkcatalogCollectionConcatenationcontainer',
@@ -591,3 +507,28 @@ $.get('report/output/org.mauritania.minibenchmark.catalog.TailRecursive.csv', fu
 </script>
 </body>
 </html>
+
+## Execution
+
+To execute the benchmarks using SBT just do:
+
+```
+sbt clean "jmh:run -help"
+sbt clean "jmh:run -i 3 -wi 3 -f1 -t1 .*Identity.*"
+```
+
+## Reporting
+
+Launch the reports generation script as follows:
+
+```
+cd report
+bash generate-reports.bash
+```
+
+Also you may want to have a jenkins Job to generate regular reports on the performance of bencharmked functions. I recommend [jmh-jenkins](https://github.com/blackboard/jmh-jenkins) with a job like this one:
+
+```
+sbt -Dsbt.log.noformat=true clean "jmh:run -rff report/input/output.csv  -i 10 -wi 10 -f1 -t1 .*"
+
+```

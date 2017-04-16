@@ -1,3 +1,3 @@
 Benchmark,Score,Score Error (99.9%)
-headRecursion,261039.226251,NaN
-tailRecursion,382540.138512,NaN
+headRecursion,236341.036724,111393.295341
+tailRecursion,382963.696690,20350.333240
