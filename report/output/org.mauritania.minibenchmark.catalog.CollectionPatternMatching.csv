@@ -1,0 +1,4 @@
+Benchmark,Score,Score Error (99.9%)
+patternMatchOnArray,5567571.325655,NaN
+patternMatchOnList,72750170.742501,NaN
+patternMatchingOnVector,1381337.192340,NaN

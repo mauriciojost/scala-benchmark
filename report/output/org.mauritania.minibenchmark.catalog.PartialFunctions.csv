@@ -1,0 +1,3 @@
+Benchmark,Score,Score Error (99.9%)
+filterAndMap,87778.802242,NaN
+partialFunction,117827.757814,NaN

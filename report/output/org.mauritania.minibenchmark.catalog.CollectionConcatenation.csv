@@ -1,0 +1,4 @@
+Benchmark,Score,Score Error (99.9%)
+concatenateOnArray,152.257582,NaN
+concatenateOnList,14.128827,NaN
+concatenateOnVector,16.894046,NaN

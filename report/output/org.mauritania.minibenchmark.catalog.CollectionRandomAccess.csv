@@ -1,0 +1,4 @@
+Benchmark,Score,Score Error (99.9%)
+randomAccessOnArray,214782553.100598,NaN
+randomAccessOnList,30024820.503938,NaN
+randomAccessOnVector,84077741.990264,NaN

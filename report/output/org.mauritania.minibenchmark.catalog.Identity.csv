@@ -1,0 +1,5 @@
+Benchmark,Score,Score Error (99.9%)
+identity,167729.694979,NaN
+identityBy2,357021.929872,NaN
+identityBy4,703288.413487,NaN
+identitySame,168330.589567,NaN

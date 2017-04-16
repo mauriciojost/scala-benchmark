@@ -1,0 +1,3 @@
+Benchmark,Score,Score Error (99.9%)
+sumOnList,11216134.640682,NaN
+sumOnSeq,9582935.946905,NaN
