@@ -2,13 +2,13 @@
 
 set -e
 # Benchmark settings
-export ITERATIONS=5
-export WARMUP_ITERATIIONS=5
+export ITERATIONS=10
+export WARMUP_ITERATIIONS=10
 #export BENCHMARK_MODE=AverageTime
 export BENCHMARK_MODE=Throughput
 
 # Files used
-export RAW_CSV=input/output.csv
+export RAW_CSV=input/raw.csv
 export CATEGORIES=input/categories.csv
 
 export HEADER_HTML=header.html
@@ -19,7 +19,7 @@ export ENDSCRIPT_HTML=endscript.html
 export TAIL_HTML=tail.html
 
 export CURRDIR=`readlink -e $(dirname $0)`
-export OUTPUT_HTML=$CURRDIR/../README.md
+export OUTPUT_HTML=$CURRDIR/../index.html
 
 cd $CURRDIR/../
 echo "### Show scala phases"
@@ -28,7 +28,7 @@ echo "### Generate raw data"
 sbt 'set scalacOptions ++=Seq("-Xprint:namer")' \
   -Dsbt.log.noformat=true \
   clean \
-  "jmh:run -rff report/input/output.csv -bm $BENCHMARK_MODE -i $ITERATIONS -wi $WARMUP_ITERATIIONS -f1 -t1 .*"
+  "jmh:run -rff report/$RAW_CSV -bm $BENCHMARK_MODE -i $ITERATIONS -wi $WARMUP_ITERATIIONS -f1 -t1 .*"
 
 cd $CURRDIR
 cat $RAW_CSV | awk -F',' '{print $1}' | sed 's/"//g' | sed 's/\(.*\)\..*/\1/' | sort | uniq | tail -n+2 > $CATEGORIES
@@ -68,3 +68,4 @@ done < "$CATEGORIES"
 echo "### Write tail"
 cat $ENDSCRIPT_HTML >> $OUTPUT_HTML
 cat $TAIL_HTML >> $OUTPUT_HTML
+
