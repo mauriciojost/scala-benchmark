@@ -22,21 +22,18 @@
 <script type="text/javascript">
 
 var $container = $('<div>').appendTo(document.body);
-
 function getClass(met) { return met.replace('.' + getMethod(met), '') }
-
 function getMethod(met) { return met.split(".").pop() }
-
 function isEligibleKeyColumn(itemNo) { return (itemNo == 0) }
-
 function isEligibleDataColumn(itemNo) { return (itemNo == 4) }
 
 var allCategories = []
-var allSeries = {}
+var allClasses = {}
 
 var lastClass = ''
 
-// categories are different data on the same entity
+// categories are different data on the same entity (for instance for the entity method, the
+// score and score error are categories)
 
 // method, score, score error
 // c1.m1, 10, 1
@@ -56,39 +53,41 @@ $.get('report/input/raw.csv', function(data) {
                 }
             });
         } else {
-            var series = { data: [] };
+            var methodData = { name: '', data: [] };
             $.each(items, function(itemNo, item) {
                 if (isEligibleKeyColumn(itemNo)) {
                     lastClass = getClass(item);
-                    series.name = getMethod(item);
+                    methodData.name = getMethod(item);
                 } else if (isEligibleDataColumn(itemNo)) {
-                    series.data.push(parseFloat(item));
+                    methodData.data.push(parseFloat(item));
                 }
 
             });
-            if (series.data.length != 0) {
-                allSeries[lastClass] = series
+            if (methodData.data.length != 0) {
+                if (allClasses[lastClass] == null) {
+                    var initAllMethods =  { allMethods: [] };
+                    allClasses[lastClass] = initAllMethods;
+                }
+                allClasses[lastClass].allMethods.push(methodData)
             }
         }
     });
 
     var counter = 0
-    //console.log('Series: %o', allSeries)
+    console.log('All classes: %o', allClasses)
 
-    for (k in allSeries) {
+    for (k in allClasses) {
+        $('.container-element').add('<div>Insert Div Content</div>');
         var options = {
             chart: {
                 renderTo: $container[counter],
-                //renderTo: container,
                 defaultSeriesType: 'column'
             },
             title: { text: 'General' },
             xAxis: { categories: allCategories },
             yAxis: { title: { text: 'ops/s' } },
-            series: []
+            series: allClasses[k].allMethods
         };
-
-        options.series.push(allSeries[k]);
 
         if (counter == 0 ) {
             console.log('Key: ' + k)
