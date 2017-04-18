@@ -1,4 +1,0 @@
-Benchmark,Score,Score Error (99.9%)
-concatenateOnArray,153.468861,1.942521
-concatenateOnList,13.612655,2.893431
-concatenateOnVector,10.815632,0.120398

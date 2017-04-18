@@ -1,4 +1,0 @@
-Benchmark,Score,Score Error (99.9%)
-patternMatchOnArray,6055861.678784,169370.389819
-patternMatchOnList,81211039.472648,173908.853566
-patternMatchingOnVector,1720842.553474,22291.678311
