@@ -64,6 +64,7 @@ $.get('report/input/raw.csv', function(data) {
                 } else if (isEligibleDataColumn(itemNo)) {
                     series.data.push(parseFloat(item));
                 }
+
             });
             if (series.data.length != 0) {
                 allSeries[lastClass] = series
@@ -72,27 +73,30 @@ $.get('report/input/raw.csv', function(data) {
     });
 
     var counter = 0
-    console.log('Series: %o', allSeries)
+    //console.log('Series: %o', allSeries)
 
     for (k in allSeries) {
         var options = {
             chart: {
-                //renderTo: $container[counter],
-                renderTo: container,
+                renderTo: $container[counter],
+                //renderTo: container,
                 defaultSeriesType: 'column'
             },
             title: { text: 'General' },
             xAxis: { categories: allCategories },
             yAxis: { title: { text: 'ops/s' } },
-            series: allSeries[k].data
+            series: []
         };
 
-        console.log('Key: ' + k)
-        console.log('Counter: ' + counter)
-        console.log('Options: %o', options)
+        options.series.push(allSeries[k]);
 
-        //options.series.push(series);
-        if (counter ==0) {var chart = new Highcharts.Chart(options)}
+        if (counter == 0 ) {
+            console.log('Key: ' + k)
+            console.log('Counter: ' + counter)
+            console.log('Options KO: %o', options)
+
+            var chart = new Highcharts.Chart(options)
+        }
         counter++
     }
 
