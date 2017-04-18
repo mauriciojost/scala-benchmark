@@ -21,32 +21,22 @@
 <div id="container" style="width:1024px; min-width: 310px; height: 400px; margin: 0 auto"></div>
 <script type="text/javascript">
 
-var options = {
-    chart: {
-        renderTo: 'container',
-        defaultSeriesType: 'column'
-    },
-    title: {
-        text: 'General'
-    },
-    xAxis: {
-        categories: []
-    },
-    yAxis: {
-        title: {
-            text: 'ops per s'
-        }
-    },
-    series: []
-};
+var $container = $('<div>').appendTo(document.body);
 
-function isEligibleKeyColumn(itemNo) {
-    return (itemNo == 0)
-}
+function getClass(met) { return met.replace('.' + getMethod(met), '') }
 
-function isEligibleDataColumn(itemNo) {
-    return (itemNo == 4 || itemNo == 5)
-}
+function getMethod(met) { return met.split(".").pop() }
+
+function isEligibleKeyColumn(itemNo) { return (itemNo == 0) }
+
+function isEligibleDataColumn(itemNo) { return (itemNo == 4) }
+
+var allCategories = []
+var allSeries = {}
+
+var lastClass = ''
+
+// categories are different data on the same entity
 
 // method, score, score error
 // c1.m1, 10, 1
@@ -55,42 +45,56 @@ function isEligibleDataColumn(itemNo) {
 // c2.m2, 23, 1
 
 $.get('report/input/raw.csv', function(data) {
-    var lines = data.replace('"', '').split('\n');
+    var lines = data.replace(/"/g, '').split('\n');
 
-    // Iterate over the lines and add categories or series
     $.each(lines, function(lineNo, line) {
-        console.log('Parsing line: ' + line)
         var items = line.split(',');
-        // header line contains categories
         if (lineNo == 0) {
             $.each(items, function(itemNo, item) {
-                console.log('Pushing category: ' + item)
-                if (isEligibleKeyColumn(itemNo) || isEligibleDataColumn(itemNo)) {
-                    options.xAxis.categories.push(item);
+                if (isEligibleDataColumn(itemNo)) {
+                    allCategories.push(item);
                 }
             });
         } else {
-            // the rest of the lines contain data with their name in the first
-            // position
-            var series = {
-                data: []
-            };
+            var series = { data: [] };
             $.each(items, function(itemNo, item) {
                 if (isEligibleKeyColumn(itemNo)) {
-                    series.name = item;
-                    console.log('Pushing item category: ' + item)
+                    lastClass = getClass(item);
+                    series.name = getMethod(item);
                 } else if (isEligibleDataColumn(itemNo)) {
                     series.data.push(parseFloat(item));
-                    console.log('Pushing item value: ' + item)
                 }
             });
             if (series.data.length != 0) {
-                options.series.push(series);
+                allSeries[lastClass] = series
             }
         }
     });
-    // Create the chart
-    var chart = new Highcharts.Chart(options);
+
+    var counter = 0
+    console.log('Series: %o', allSeries)
+
+    for (k in allSeries) {
+        var options = {
+            chart: {
+                //renderTo: $container[counter],
+                renderTo: container,
+                defaultSeriesType: 'column'
+            },
+            title: { text: 'General' },
+            xAxis: { categories: allCategories },
+            yAxis: { title: { text: 'ops/s' } },
+            series: allSeries[k].data
+        };
+
+        console.log('Key: ' + k)
+        console.log('Counter: ' + counter)
+        console.log('Options: %o', options)
+
+        //options.series.push(series);
+        if (counter ==0) {var chart = new Highcharts.Chart(options)}
+        counter++
+    }
 
 });
 
