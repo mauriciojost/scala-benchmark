@@ -18,14 +18,14 @@
 </head>
 <body>
 <h1>Scala Micro Benchmarking</h1>
-<div id="container" style="width:1024px; min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div id="container" </div>
 <script type="text/javascript">
 
 var $container = $('<div>').appendTo(document.body);
 function getClass(met) { return met.replace('.' + getMethod(met), '') }
 function getMethod(met) { return met.split(".").pop() }
 function isEligibleKeyColumn(itemNo) { return (itemNo == 0) }
-function isEligibleDataColumn(itemNo) { return (itemNo == 4) }
+function isEligibleDataColumn(itemNo) { return (itemNo == 4 || itemNo == 5) }
 
 var allCategories = []
 var allClasses = {}
@@ -73,30 +73,25 @@ $.get('report/input/raw.csv', function(data) {
         }
     });
 
-    var counter = 0
-    console.log('All classes: %o', allClasses)
+    for (iClass in allClasses) {
+        var div = document.createElement('div');
+        document.body.appendChild(div);
+        div.style.width = '1024px';
+        div.style.height = '400px';
+        div.style.margin = '0';
 
-    for (k in allClasses) {
-        $('.container-element').add('<div>Insert Div Content</div>');
         var options = {
             chart: {
-                renderTo: $container[counter],
+                renderTo: div,
                 defaultSeriesType: 'column'
             },
-            title: { text: 'General' },
+            title: { text: iClass },
             xAxis: { categories: allCategories },
             yAxis: { title: { text: 'ops/s' } },
-            series: allClasses[k].allMethods
+            series: allClasses[iClass].allMethods
         };
 
-        if (counter == 0 ) {
-            console.log('Key: ' + k)
-            console.log('Counter: ' + counter)
-            console.log('Options KO: %o', options)
-
-            var chart = new Highcharts.Chart(options)
-        }
-        counter++
+        var chart = new Highcharts.Chart(options)
     }
 
 });
