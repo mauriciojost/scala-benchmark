@@ -2,11 +2,12 @@
 
 This project aims to provide an empirical demonstration of the performance of comparable algorithms.
 
-Algorithms are categorized by functionality and located [here](https://github.com/mauriciojost/scala-ubenchmark/tree/master/src/main/scala/org/mauritania/minibenchmark/catalog).  New algorithms can be very easily added.
+Algorithms are categorized by functionality and located [here](/tree/master/src/main/scala/org/mauritania/minibenchmark/catalog).
+New algorithms can be very easily added.
 
-It uses [JMH](http://openjdk.java.net/projects/code-tools/jmh/) under the hood for micro benchmarking.
+It uses [JMH](http://openjdk.java.net/projects/code-tools/jmh/) under the hood for benchmarking.
 
-[![REPORT](https://img.shields.io/badge/GOTO-REPORT-333399.svg)](https://mauriciojost.github.io/scala-ubenchmark/)
+[![REPORT](https://img.shields.io/badge/GOTO-REPORT-333399.svg)](https://mauriciojost.github.io/scala-benchmark/)
 
 ## EXECUTION
 
