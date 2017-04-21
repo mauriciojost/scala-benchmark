@@ -8,7 +8,7 @@ Algorithms benchmarked are located [here](/tree/master/src/main/scala/org/maurit
 
 It uses [JMH](http://openjdk.java.net/projects/code-tools/jmh/) under the hood for benchmarking.
 
-[![REPORT](https://img.shields.io/badge/GOTO-REPORT-333399.svg)](https://mauriciojost.github.io/scala-benchmark/)
+[![REPORT](https://img.shields.io/badge/GOTO-REPORT-3333FF.svg)](https://mauriciojost.github.io/scala-benchmark/)
 
 ## EXECUTION
 
