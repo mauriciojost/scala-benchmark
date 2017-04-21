@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Scala Micro Benchmarking</title>
+    <title>Scala Benchmarking</title>
     <style>
         body{
         margin-top: 30px;
@@ -17,11 +17,9 @@
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
 </head>
 <body>
-<h1>Scala Micro Benchmarking</h1>
-<div id="container" </div>
+<h1>Scala Benchmarking</h1>
 <script type="text/javascript">
 
-var $container = $('<div>').appendTo(document.body);
 function getClass(met) { return met.replace('.' + getMethod(met), '') }
 function getMethod(met) { return met.split(".").pop() }
 function isEligibleKeyColumn(itemNo) { return (itemNo == 0) }
