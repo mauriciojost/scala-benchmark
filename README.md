@@ -1,9 +1,10 @@
 # README
 
-This project aims to provide an empirical demonstration of the performance of comparable algorithms.
+This project aims to provide an empirical demonstration of the performance of sets of comparable algorithms.
 
-Algorithms are categorized by functionality and located [here](/tree/master/src/main/scala/org/mauritania/minibenchmark/catalog).
-New algorithms can be very easily added.
+Algorithms benchmarked are located [here](/tree/master/src/main/scala/org/mauritania/minibenchmark/catalog).
+
+**New algorithm sets can be very easily added!**
 
 It uses [JMH](http://openjdk.java.net/projects/code-tools/jmh/) under the hood for benchmarking.
 

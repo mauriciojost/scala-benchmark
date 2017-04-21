@@ -55,7 +55,7 @@ $.get('report/input/raw.csv', function(data) {
             $.each(items, function(itemNo, item) {
                 if (isEligibleKeyColumn(itemNo)) {
                     lastClass = getClass(item);
-                    methodData.name = getMethod(item);
+                    methodData.name = 'Algorithm ' + getMethod(item);
                 } else if (isEligibleDataColumn(itemNo)) {
                     methodData.data.push(parseFloat(item));
                 }
@@ -83,7 +83,7 @@ $.get('report/input/raw.csv', function(data) {
                 renderTo: div,
                 defaultSeriesType: 'column'
             },
-            title: { text: iClass },
+            title: { text: 'Set ' + iClass },
             xAxis: { categories: allCategories },
             yAxis: { title: { text: 'ops/s' } },
             series: allClasses[iClass].allMethods
