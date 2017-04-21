@@ -18,7 +18,6 @@
 </head>
 <body>
 <h1>Scala Benchmarking Report</h1>
-<hr/>
 <script type="text/javascript">
 
 function getClass(met) { return met.replace('.' + getMethod(met), '') }
@@ -73,10 +72,14 @@ $.get('report/input/raw.csv', function(data) {
     });
 
     for (iClass in allClasses) {
+
+        var divspace = document.createElement('div');
+        divspace.style.width = '1024px'
+        divspace.style.height = '150px'
+        document.body.appendChild(divspace);
+
         var div = document.createElement('div');
         document.body.appendChild(div);
-        var hr = document.createElement('hr');
-        document.body.appendChild(hr);
         div.style.width = '1024px';
         div.style.height = '400px';
         div.style.margin = '0';
