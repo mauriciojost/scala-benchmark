@@ -24,3 +24,5 @@
 "org.mauritania.minibenchmark.catalog.SeqVsListSum.sumOnSeq","thrpt",1,20,11948263.486618,95182.838929,"ops/s"
 "org.mauritania.minibenchmark.catalog.TailRecursive.headRecursion","thrpt",1,20,261460.158851,1057.972803,"ops/s"
 "org.mauritania.minibenchmark.catalog.TailRecursive.tailRecursion","thrpt",1,20,386590.663843,662.148409,"ops/s"
+"org.mauritania.minibenchmark.catalog.AcumulateOnArrayOfInt.genericWithBoxing","thrpt",1,20,111780.491975,857.722842,"ops/s"
+"org.mauritania.minibenchmark.catalog.AcumulateOnArrayOfInt.specializedWithoutBoxing","thrpt",1,20,3165726.578897,10383.573089,"ops/s"
