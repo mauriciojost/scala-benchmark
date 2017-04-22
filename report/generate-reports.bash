@@ -6,6 +6,7 @@ export ITERATIONS=20
 export WARMUP_ITERATIIONS=20
 #export BENCHMARK_MODE=AverageTime
 export BENCHMARK_MODE=Throughput
+export PATTERN=${1:-.*}
 
 # Files used
 export RAW_CSV=input/raw.csv
@@ -19,6 +20,6 @@ echo "### Generate raw data"
 sbt 'set scalacOptions ++=Seq("-Xprint:namer")' \
   -Dsbt.log.noformat=true \
   clean \
-  "jmh:run -rff report/$RAW_CSV -bm $BENCHMARK_MODE -i $ITERATIONS -wi $WARMUP_ITERATIIONS -f1 -t1 .*"
+  "jmh:run -rff report/$RAW_CSV -bm $BENCHMARK_MODE -i $ITERATIONS -wi $WARMUP_ITERATIIONS -f1 -t1 $PATTERN"
 
 
