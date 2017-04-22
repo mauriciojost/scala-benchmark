@@ -22,6 +22,7 @@
 
 function getClass(met) { return met.replace('.' + getMethod(met), '') }
 function getMethod(met) { return met.split(".").pop() }
+function getClassPath(met) { return 'blob/master/src/main/scala/' + met.replace(/\./g, '/') + '.scala' }
 function isEligibleKeyColumn(itemNo) { return (itemNo == 0) }
 function isEligibleDataColumn(itemNo) { return (itemNo == 4 || itemNo == 5) }
 
@@ -92,7 +93,13 @@ $.get('report/input/raw.csv', function(data) {
             title: { text: 'Set ' + iClass },
             xAxis: { categories: allCategories },
             yAxis: { title: { text: 'ops/s' } },
-            series: allClasses[iClass].allMethods
+            series: allClasses[iClass].allMethods,
+            plotOptions: {
+                series: {
+                    cursor: 'pointer',
+                    point: { events: { click: function () { location.href = getClassPath(iClass); } } }
+                }
+            }
         };
 
         var chart = new Highcharts.Chart(options)
