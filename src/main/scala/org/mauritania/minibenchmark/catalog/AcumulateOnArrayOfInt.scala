@@ -11,12 +11,18 @@ class AcumulateOnArrayOfInt {
   }
 
   @Benchmark
-  def specializedWithoutBoxing(): Int = {
+  def forLoopWithoutBoxing(): Int = {
     var acum: Int = 0
     for (i <- Range(0, LargeArray.length)) {
       acum += LargeArray(i)
     }
     acum
+  }
+
+  @Benchmark
+  @specialized
+  def genericButSpecialized(): Int = {
+    LargeArray.sum
   }
 
 }

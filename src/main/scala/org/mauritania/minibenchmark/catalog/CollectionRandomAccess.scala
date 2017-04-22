@@ -5,6 +5,8 @@ import org.openjdk.jmh.annotations.Benchmark
 
 class CollectionRandomAccess {
 
+  // See http://www.scala-lang.org/docu/files/collections-api/collections_40.html
+
   @Benchmark
   def randomAccessOnArray(): Int = {
     val k = BaseArray

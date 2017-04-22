@@ -6,6 +6,11 @@ import org.openjdk.jmh.annotations.Benchmark
 class IdentityTricky {
 
   @Benchmark
+  def returnAConstant(): Int = {
+    1
+  }
+
+  @Benchmark
   def identity(): Int = {
     Range(1, Seed).sum
   }
