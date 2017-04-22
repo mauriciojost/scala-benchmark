@@ -40,4 +40,7 @@ package object mauritania {
   @State(Scope.Thread)
   val LargeVector = Range(1, Seed).toVector
 
+  @State(Scope.Thread)
+  val LargeCharArray = Range(1, Seed).map(_.toChar).toArray
+
 }
