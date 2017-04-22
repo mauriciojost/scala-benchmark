@@ -92,16 +92,14 @@ $.get('report/input/raw.csv', function(data) {
                 renderTo: div,
                 defaultSeriesType: 'column'
             },
-            title: { text: 'Set ' + iClass },
+            title: {  },
+            title: {
+                useHTML: true,
+                text: 'Set ' + iClass + ' ' + '<a href="' + getClassPath(iClass) + '" style="font-size:12px">source code</a>'
+            },
             xAxis: { categories: allCategories },
             yAxis: { title: { text: 'ops/s' } },
-            series: allClasses[iClass].allMethods,
-            plotOptions: {
-                series: {
-                    cursor: 'pointer',
-                    point: { events: { click: function () { location.href = getClassPath(iClass); } } }
-                }
-            }
+            series: allClasses[iClass].allMethods
         };
 
         var chart = new Highcharts.Chart(options)
