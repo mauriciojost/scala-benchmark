@@ -20,9 +20,11 @@
 <h1>Scala Benchmarking Report</h1>
 <script type="text/javascript">
 
+var urlPrefix = 'https://github.com/mauriciojost/scala-benchmark/blob/master/src/main/scala/'
+
 function getClass(met) { return met.replace('.' + getMethod(met), '') }
 function getMethod(met) { return met.split(".").pop() }
-function getClassPath(met) { return 'blob/master/src/main/scala/' + met.replace(/\./g, '/') + '.scala' }
+function getClassPath(met) { return urlPrefix + met.replace(/\./g, '/') + '.scala' }
 function isEligibleKeyColumn(itemNo) { return (itemNo == 0) }
 function isEligibleDataColumn(itemNo) { return (itemNo == 4 || itemNo == 5) }
 
