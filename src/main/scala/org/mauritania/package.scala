@@ -2,7 +2,20 @@ package org.mauritania
 
 import org.openjdk.jmh.annotations.{Scope, State}
 
+import scala.util.Random
+
 package object mauritania {
+
+  /*
+  Sometimes you way want to initialize some variables that your benchmark code needs, but which
+  you do not want to be part of the code your benchmark measures.
+  Such variables are called "state" variables.
+
+  Scopes of a state variable:
+    - Thread:	Each thread running the benchmark will create its own instance of the state object.
+    - Group: Each thread group running the benchmark will create its own instance of the state object.
+    - Benchmark: All threads running the benchmark share the same state object.
+  */
 
   @State(Scope.Thread)
   val Seed = 1000
@@ -42,5 +55,8 @@ package object mauritania {
 
   @State(Scope.Thread)
   val LargeCharArray = Range(1, Seed).map(_.toChar).toArray
+
+  @State(Scope.Thread)
+  val Rnd = new Random()
 
 }
