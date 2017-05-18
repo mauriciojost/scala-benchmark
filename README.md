@@ -5,7 +5,34 @@ This project aims to provide an empirical demonstration of the performance of se
 A set of comparable argorithms is implemented in a regular class with a simple anotation on benchmarked methods. 
 For example:
 
-<script src="https://gist.github.com/mauriciojost/62d32583e1465a0e14e8addae697c618.js"></script>
+```scala
+package org.mauritania.minibenchmark.catalog
+
+import org.mauritania.mauritania._
+import org.openjdk.jmh.annotations.Benchmark
+
+class CollectionIterationIntermediate {
+
+  @Benchmark
+  def withIntermediateCollections(): Int = {
+    LargeList.
+      map(i => i + 1).
+      map(i => i * 2).
+      sum
+  }
+
+  @Benchmark
+  def withoutIntermediateCollections(): Int = {
+    LargeList.
+      view.
+      map(i => i + 1).
+      map(i => i * 2).
+      force.
+      sum
+  }
+
+}
+```
 
 Algorithms benchmarked are located [in the catalog](src/main/scala/org/mauritania/minibenchmark/catalog).
 
