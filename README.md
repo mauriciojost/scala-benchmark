@@ -1,6 +1,11 @@
 # README
 
-This project aims to provide an empirical demonstration of the performance of sets of comparable algorithms.
+This project aims to provide an empirical demonstration of the performance of sets of comparable algorithms implemented in Scala.
+
+A set of comparable argorithms is implemented in a regular class with a simple anotation on benchmarked methods. 
+For example:
+
+{% gist mauriciojost/62d32583e1465a0e14e8addae697c618 %}
 
 Algorithms benchmarked are located [in the catalog](src/main/scala/org/mauritania/minibenchmark/catalog).
 
