@@ -34,7 +34,12 @@ class CollectionIterationIntermediate {
 }
 ```
 
-Algorithms benchmarked are located [in the catalog](src/main/scala/org/mauritania/minibenchmark/catalog).
+This generates the following report:
+
+![Example of a generated report](images/report-sample.png)
+
+
+All the currently benchmarked algorithms are located [in the catalog, here](src/main/scala/org/mauritania/minibenchmark/catalog).
 
 [![REPORT](https://img.shields.io/badge/GOTO-REPORT-3333FF.svg)](https://mauriciojost.github.io/scala-benchmark/)
 
