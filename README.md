@@ -10,6 +10,9 @@ It uses [JMH](http://openjdk.java.net/projects/code-tools/jmh/) under the hood f
 Comparable algorithms (that do the same in different ways) are called sets of algorithms.
 
 A set of comparable argorithms is implemented in a regular class with a simple anotation on benchmarked methods. 
+
+### An example
+
 For example:
 
 ```scala
@@ -47,7 +50,7 @@ This would generate the following report:
 
  **New algorithm sets can be very easily added!**
 
-## QUICK EXECUTION
+## Quick execution
 
 To execute the benchmarks and simply display the results, using _sbt_ just do:
 
@@ -56,7 +59,7 @@ sbt clean "jmh:run -help"
 sbt clean "jmh:run -i 3 -wi 3 -f1 -t1 .*Identity.*"
 ```
 
-## GENERATE THE REPORT
+## Generate the report
 
 You can generate the visualisation report with the benchmarking result of the algorithms available in the catalog, so that it can be shared later. 
 For that you can do as follows:
@@ -67,7 +70,7 @@ bash generate-reports.bash
 ```
 A new [raw.csv](report/input/raw.csv) file will be generated. Then you can locally browse [index.html](index.html).
 
-### REPORT ON GITHUB
+### Report on GitHub
 
 If you want to generate a report that you can share with other people, 
 - fork the project in GitHub
@@ -75,7 +78,7 @@ If you want to generate a report that you can share with other people,
 - generate the report and commit the changed _raw.csv_
 - browse the GitHub page
 
-## NOTES
+## Notes
 
 I recommend to use the following commands to go further in the investigation:
 
