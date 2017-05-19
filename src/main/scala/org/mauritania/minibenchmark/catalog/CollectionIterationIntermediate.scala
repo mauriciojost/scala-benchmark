@@ -7,12 +7,20 @@ class CollectionIterationIntermediate {
 
   @Benchmark
   def withIntermediateCollections(): Int = {
-    LargeList.map(i => i + 1).map(i => i * 2).sum
+    LargeList.
+      map(i => i + 1).
+      map(i => i * 2).
+      sum
   }
 
   @Benchmark
   def withoutIntermediateCollections(): Int = {
-    LargeList.view.map(i => i + 1).map(i => i * 2).force.sum
+    LargeList.
+      view.
+      map(i => i + 1).
+      map(i => i * 2).
+      force.
+      sum
   }
 
 }
